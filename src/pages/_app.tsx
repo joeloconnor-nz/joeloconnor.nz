@@ -13,7 +13,7 @@ export default function App({ Component, pageProps }: AppProps) {
                     type: 'website',
                     images: [
                         {
-                            url: '/images/profile-photo.jpeg',
+                            url: 'https://joeloconnor.nz/images/profile-photo.jpeg',
                         },
                     ],
                 }}
