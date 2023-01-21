@@ -3,6 +3,7 @@ import { LinkedInLogo } from '@/components/icons/linkedin-logo';
 import { MoonIcon } from '@/components/icons/moon';
 import Head from 'next/head';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function Home() {
     return (
@@ -21,14 +22,15 @@ export default function Home() {
             </Head>
             <div className="flex min-h-screen flex-col justify-between">
                 <header className="flex flex-row justify-between p-7">
-                    <a
-                        href="#"
+                    <Link
+                        href="/"
                         className="text-purple-900 dark:text-purple-500"
                     >
                         joeloconnor.nz
-                    </a>
+                    </Link>
+                    {/* Temporarily hiding dark mode toggle until implemented */}
                     <button
-                        className="p-2 transition-colors hover:text-slate-500 dark:text-slate-400"
+                        className="hidden p-2 transition-colors hover:text-slate-500 dark:text-slate-400"
                         aria-label="Toggle Dark Mode"
                     >
                         <MoonIcon />
@@ -36,17 +38,17 @@ export default function Home() {
                 </header>
                 <main className="flex flex-col items-center p-10 text-center">
                     <Image
-                        className="mb-10 h-24 w-24 rounded-full shadow-2xl sm:h-40 sm:w-40 md:h-auto md:w-auto"
+                        className="mb-10 h-24 w-24 rounded-full shadow-2xl sm:h-40 sm:w-40 md:h-44 md:w-44"
                         src="/profile-photo.jpeg"
-                        width="180"
-                        height="180"
+                        width="176"
+                        height="176"
                         alt=""
                     />
                     <h1 className="mb-10 text-4xl text-slate-700 dark:text-slate-300 sm:text-5xl md:text-6xl">
                         Joel O&rsquo;Connor
                     </h1>
                     <p className="text-slate-500 dark:text-slate-400 md:text-2xl">
-                        I am currently rebilding my website as I learn software
+                        I am currently rebuilding my website as I learn software
                         development
                     </p>
                     <p className="mt-2 hidden text-slate-500 dark:text-slate-400 sm:block md:text-2xl">
