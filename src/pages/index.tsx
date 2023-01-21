@@ -1,30 +1,20 @@
 import { GitHubLogo } from '@/components/icons/github-logo';
 import { LinkedInLogo } from '@/components/icons/linkedin-logo';
 import { MoonIcon } from '@/components/icons/moon';
-import Head from 'next/head';
+import { NextSeo } from 'next-seo';
 import Image from 'next/image';
 import Link from 'next/link';
 
 export default function Home() {
     return (
         <>
-            <Head>
-                <title>Joel O&rsquo;Connor</title>
-                <meta
-                    name="description"
-                    content="The personal website of Joel O&rsquo;Connor. Follow my progress as I learn software development"
-                />
-                <meta
-                    name="viewport"
-                    content="width=device-width, initial-scale=1"
-                />
-                <link rel="icon" href="/favicon.ico" />
-            </Head>
+            <NextSeo />
+
             <div className="mx-auto flex min-h-screen max-w-screen-xl flex-col justify-between">
                 <header className="flex flex-row justify-between p-6">
                     <Link
                         href="/"
-                        className="text-xl font-light text-purple-500 dark:text-purple-600 sm:text-2xl md:text-3xl"
+                        className="text-xl font-light text-purple-500 transition-colors hover:text-stone-700 dark:text-purple-600 hover:dark:text-stone-300 sm:text-2xl md:text-3xl"
                     >
                         joeloconnor.nz
                     </Link>
@@ -39,7 +29,7 @@ export default function Home() {
                 <main className="flex flex-col items-center py-8 px-6 text-center">
                     <Image
                         className="mb-12 h-40 w-40 rounded-3xl shadow-2xl shadow-purple-900/60 dark:shadow-purple-700/30 md:h-44 md:w-44"
-                        src="/profile-photo.jpeg"
+                        src="/images/profile-photo.jpeg"
                         width="176"
                         height="176"
                         alt=""
