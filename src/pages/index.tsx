@@ -20,7 +20,7 @@ export default function Home() {
                 />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <div className="flex min-h-screen flex-col justify-between">
+            <div className="mx-auto flex min-h-screen max-w-screen-xl flex-col justify-between">
                 <header className="flex flex-row justify-between p-7">
                     <Link
                         href="/"
