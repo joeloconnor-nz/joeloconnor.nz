@@ -16,7 +16,7 @@ export default function Home() {
                     alt=""
                 />
                 <h1 className="mb-8 text-4xl font-medium text-stone-700 dark:text-stone-300 sm:text-5xl md:mb-20 md:text-6xl">
-                    Joel O’Connor
+                    Joel O&apos;Connor
                 </h1>
                 <p className="text-slate-600 dark:text-stone-400 md:text-2xl">
                     I am currently rebuilding my website as I learn software
