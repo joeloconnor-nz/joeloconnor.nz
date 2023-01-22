@@ -7,7 +7,7 @@ const seoProps: NextSeoProps = {};
 export default function Home() {
     return (
         <Layout seo={seoProps}>
-            <div className="flex grow flex-col items-center justify-center">
+            <div className="flex grow flex-col items-center justify-center text-center">
                 <Image
                     className="mb-12 h-40 w-40 rounded-3xl shadow-2xl shadow-purple-900/60 dark:shadow-purple-700/30 md:h-44 md:w-44"
                     src="/images/profile-photo.jpeg"
