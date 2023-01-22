@@ -3,10 +3,10 @@ import { DefaultSeo, DefaultSeoProps } from 'next-seo';
 import type { AppProps } from 'next/app';
 
 const defaultSeoProp: DefaultSeoProps = {
-    defaultTitle: 'Joel O’Connor',
-    titleTemplate: '%s | Joel O’Connor',
+    defaultTitle: "Joel O'Connor",
+    titleTemplate: "%s | Joel O'Connor",
     description:
-        'The personal website of Joel O’Connor. Follow my progress as I learn software development',
+        "The personal website of Joel O'Connor. Follow my progress as I learn software development",
     openGraph: {
         type: 'website',
         images: [
@@ -21,7 +21,7 @@ const defaultSeoProp: DefaultSeoProps = {
     additionalMetaTags: [
         {
             name: 'author',
-            content: 'Joel O’Connor',
+            content: "Joel O'Connor",
         },
     ],
     additionalLinkTags: [
