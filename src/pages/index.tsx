@@ -13,7 +13,8 @@ export default function Home() {
                     src="/images/profile-photo.jpeg"
                     width="176"
                     height="176"
-                    alt=""
+                    alt="Image of Joel O'Connor"
+                    priority
                 />
                 <h1 className="mb-8 text-4xl font-medium text-stone-700 dark:text-stone-300 sm:text-5xl md:mb-20 md:text-6xl">
                     Joel O&apos;Connor

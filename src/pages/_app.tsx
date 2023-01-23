@@ -1,6 +1,7 @@
 import '@/styles/globals.css';
 import { DefaultSeo, DefaultSeoProps } from 'next-seo';
 import type { AppProps } from 'next/app';
+import { Analytics } from '@vercel/analytics/react';
 
 const defaultSeoProp: DefaultSeoProps = {
     defaultTitle: "Joel O'Connor",
@@ -37,6 +38,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <>
             <DefaultSeo {...defaultSeoProp} />
             <Component {...pageProps} />
+            <Analytics/>
         </>
     );
 }
