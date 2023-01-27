@@ -12,7 +12,11 @@ export default function Contact() {
                 <h1 className="mb-10 text-4xl text-stone-700 dark:text-stone-300">
                     Send me a message
                 </h1>
-                <form className="flex flex-col gap-4">
+                <form
+                    className="flex flex-col gap-4"
+                    action="/api/email"
+                    method="POST"
+                >
                     <div>
                         <label
                             className="text-stone-600 dark:text-stone-400"
@@ -23,6 +27,7 @@ export default function Contact() {
                         <input
                             className="mt-2 block w-full rounded-md border-transparent bg-white placeholder:text-stone-300 focus:border-stone-400 focus:bg-white focus:ring-0 dark:bg-stone-700 dark:placeholder:text-stone-500 dark:focus:border-stone-600 dark:focus:bg-stone-600"
                             id="name"
+                            name="name"
                             type="text"
                             placeholder="John Doe"
                         />
@@ -38,6 +43,7 @@ export default function Contact() {
                         <input
                             className="mt-2 block w-full rounded-md border-transparent bg-white placeholder:text-stone-300 focus:border-stone-400 focus:bg-white focus:ring-0 dark:bg-stone-700 dark:placeholder:text-stone-500 dark:focus:border-stone-600 dark:focus:bg-stone-600"
                             id="email"
+                            name="email"
                             type="email"
                             placeholder="john@example.nz"
                         />
@@ -53,6 +59,7 @@ export default function Contact() {
                         <textarea
                             className="mt-2 block w-full rounded-md border-transparent bg-white placeholder:text-stone-300 focus:border-stone-400 focus:bg-white focus:ring-0 dark:bg-stone-700 dark:placeholder:text-stone-500 dark:focus:border-stone-600 dark:focus:bg-stone-600"
                             id="message"
+                            name="message"
                             placeholder="Type your message here..."
                             rows={4}
                         />
