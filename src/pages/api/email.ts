@@ -4,9 +4,10 @@ import nodemailer from 'nodemailer';
 
 export default async function handler(
     req: NextApiRequest,
-    res: NextApiResponse<string>
+    res: NextApiResponse<any>
 ) {
-    const formData = req.body;
+    const formData = JSON.parse(req.body);
+    console.log(formData);
     console.log('Sending email...');
 
     // create reusable transporter object using the default SMTP transport
@@ -48,5 +49,5 @@ export default async function handler(
     console.log('Message sent: %s', info.messageId);
     // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
 
-    res.status(200).redirect('/');
+    res.status(200).json({ message: 'Message sent' });
 }
