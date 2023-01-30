@@ -1,6 +1,8 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
+import { ContactEmail } from '@/components/contact-email';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import nodemailer from 'nodemailer';
+import { renderToString } from 'react-dom/server';
 
 export default async function handler(
     req: NextApiRequest,
@@ -22,6 +24,9 @@ export default async function handler(
         },
     });
 
+    // create email HTML using react
+    const html = renderToString(<ContactEmail data={formData} />);
+
     // send mail with defined transport object
     let info = await transporter.sendMail({
         from: `${formData.name} <${process.env.SMTP_FROM_ADDRESS}>`, // sender address
@@ -29,21 +34,7 @@ export default async function handler(
         replyTo: formData.email,
         subject: `Message from ${formData.email}`, // Subject line
         text: formData.message, // plain text body
-        html: `
-        <div>
-            <p>${formData.message}</p>
-            <table>
-                <tr>
-                    <th>Name</th>
-                    <td>${formData.name}</td>
-                </tr>
-                <tr>
-                    <th>Email</th>
-                    <td>${formData.email}</td>
-                </tr>
-            </table>
-        </div>
-        `,
+        html: html,
     });
 
     console.log('Message sent: %s', info.messageId);
