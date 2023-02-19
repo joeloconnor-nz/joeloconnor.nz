@@ -12,7 +12,7 @@ export function Layout(props: LayoutProps) {
     return (
         <>
             <NextSeo {...props.seo} />
-            <div className="mx-auto flex min-h-screen max-w-screen-xl flex-col">
+            <div className="mx-auto flex min-h-[100dvh] max-w-screen-xl flex-col">
                 <Header />
                 <main className="flex grow flex-col py-8 px-6">
                     {props.children}
