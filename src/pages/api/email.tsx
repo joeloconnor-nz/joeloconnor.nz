@@ -8,9 +8,51 @@ export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse<any>
 ) {
-    const formData = JSON.parse(req.body);
-    console.log(formData);
     console.log('Sending email...');
+
+    const formData = JSON.parse(req.body);
+    const { name, email, message } = formData;
+
+    // Name must be at least 1 character long
+    if (name.length === 0) {
+        res.status(400).send({
+            message: 'Name must be at least 1 character long.',
+        });
+        return;
+    }
+
+    // Name can be no longer than 100 characters long
+    if (name.length > 100) {
+        res.status(400).send({
+            message: 'Name must not be longer than 100 characters.',
+        });
+        return;
+    }
+
+    // Email must be a valid email address
+    const mailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,63})+$/;
+    if (!mailFormat.test(email)) {
+        res.status(400).send({
+            message: 'Email must contain a valid email address.',
+        });
+        return;
+    }
+
+    // Message must be at least 10 characters long
+    if (message.length < 10) {
+        res.status(400).send({
+            message: 'Message must be at least 10 characters long.',
+        });
+        return;
+    }
+
+    // Message can be no longer than 2000 characters long
+    if (message.length > 2000) {
+        res.status(400).send({
+            message: 'Message must not be longer than 2000 characters.',
+        });
+        return;
+    }
 
     // create reusable transporter object using the default SMTP transport
     let transporter = nodemailer.createTransport({
@@ -29,12 +71,12 @@ export default async function handler(
 
     // send mail with defined transport object
     let info = await transporter.sendMail({
-        from: `${formData.name} <${process.env.SMTP_FROM_ADDRESS}>`, // sender address
+        from: `${name} <${process.env.SMTP_FROM_ADDRESS}>`, // sender address
         to: process.env.SMTP_TO_ADDRESS, // list of receivers
-        replyTo: formData.email,
-        subject: `Message from ${formData.email}`, // Subject line
-        text: formData.message, // plain text body
-        html: html,
+        replyTo: email,
+        subject: `Message from ${email}`, // Subject line
+        text: message, // plain text body
+        html,
     });
 
     console.log('Message sent: %s', info.messageId);

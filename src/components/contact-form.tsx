@@ -16,12 +16,18 @@ export function ContactForm(props: ContactFormProps) {
 
         const formData = { name, email, message };
 
-        await fetch('/api/email', {
+        const response = await fetch('/api/email', {
             method: 'POST',
             body: JSON.stringify(formData),
         });
 
-        props.onMessageSent();
+        if (response.ok) {
+            props.onMessageSent();
+        } else {
+            const body = await response.json();
+            alert(`Failed to send email. ${body.message}`);
+        }
+
         setLoading(false);
     };
 
