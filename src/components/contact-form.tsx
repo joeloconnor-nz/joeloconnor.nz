@@ -14,11 +14,7 @@ export function ContactForm(props: ContactFormProps) {
         event.preventDefault();
         setLoading(true);
 
-        const formData = {
-            name: name,
-            email: email,
-            message: message,
-        };
+        const formData = { name, email, message };
 
         await fetch('/api/email', {
             method: 'POST',
@@ -43,6 +39,8 @@ export function ContactForm(props: ContactFormProps) {
                     id="name"
                     name="name"
                     type="text"
+                    required={true}
+                    maxLength={100}
                     placeholder="John Doe"
                     disabled={loading}
                     value={name}
@@ -65,6 +63,7 @@ export function ContactForm(props: ContactFormProps) {
                     id="email"
                     name="email"
                     type="email"
+                    required={true}
                     placeholder="john@example.nz"
                     disabled={loading}
                     value={email}
@@ -86,6 +85,9 @@ export function ContactForm(props: ContactFormProps) {
                     className="mt-2 block w-full rounded-md border-transparent bg-white placeholder:text-stone-300 focus:border-stone-400 focus:bg-white focus:ring-0 dark:bg-stone-700 dark:placeholder:text-stone-500 dark:focus:border-stone-600 dark:focus:bg-stone-600"
                     id="message"
                     name="message"
+                    required={true}
+                    minLength={10}
+                    maxLength={2000}
                     placeholder="Type your message here..."
                     rows={4}
                     disabled={loading}
@@ -95,6 +97,9 @@ export function ContactForm(props: ContactFormProps) {
                         setMessage(newValue);
                     }}
                 />
+                <p className="mt-1 text-right text-stone-400 dark:text-stone-600">
+                    {message.length}/2000
+                </p>
             </div>
 
             <button
