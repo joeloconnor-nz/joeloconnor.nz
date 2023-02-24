@@ -1,5 +1,6 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import { ContactEmail } from '@/components/contact-email';
+import { validateCloudflareTurnstileToken } from '@/utils/cloudflare-turnstile';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import nodemailer from 'nodemailer';
 import { renderToString } from 'react-dom/server';
@@ -11,7 +12,7 @@ export default async function handler(
     console.log('Sending email...');
 
     const formData = JSON.parse(req.body);
-    const { name, email, message } = formData;
+    const { name, email, message, captchaToken } = formData;
 
     // Name must be at least 1 character long
     if (name.length === 0) {
@@ -50,6 +51,27 @@ export default async function handler(
     if (message.length > 2000) {
         res.status(400).send({
             message: 'Message must not be longer than 2000 characters.',
+        });
+        return;
+    }
+
+    // Validate that captchaToken is provided
+    if (captchaToken === undefined || captchaToken.length === 0) {
+        res.status(400).send({
+            message: 'Cloudflare Turnstile captcha token must be provided.',
+        });
+        return;
+    }
+
+    // Validate captchaToken against Cloudflare API
+    const isCaptchaValid = await validateCloudflareTurnstileToken(
+        req,
+        captchaToken
+    );
+
+    if (isCaptchaValid === false) {
+        res.status(400).send({
+            message: 'Cloudflare Turnstile captcha token provided is invalid.',
         });
         return;
     }

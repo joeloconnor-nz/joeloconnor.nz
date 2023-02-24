@@ -1,4 +1,5 @@
 import { FormEventHandler, useState } from 'react';
+import Turnstile from 'react-turnstile';
 
 export interface ContactFormProps {
     onMessageSent: () => void;
@@ -9,12 +10,25 @@ export function ContactForm(props: ContactFormProps) {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [message, setMessage] = useState('');
+    const [captchaToken, setCaptchaToken] = useState('');
+
+    const turnstileSiteKey =
+        process.env.NEXT_PUBLIC_CLOUDFLARE_TURNSTILE_SITE_KEY;
+
+    if (!turnstileSiteKey) {
+        throw new Error('Cloudflare Turnstile site key not defined.');
+    }
 
     const handleSubmit: FormEventHandler<HTMLFormElement> = async (event) => {
         event.preventDefault();
-        setLoading(true);
+        const formData = { name, email, message, captchaToken };
 
-        const formData = { name, email, message };
+        if (formData.captchaToken === '') {
+            alert('Please complete the captcha verification');
+            return;
+        }
+
+        setLoading(true);
 
         const response = await fetch('/api/email', {
             method: 'POST',
@@ -107,6 +121,12 @@ export function ContactForm(props: ContactFormProps) {
                     {message.length}/2000
                 </p>
             </div>
+
+            <Turnstile
+                sitekey={turnstileSiteKey}
+                onVerify={setCaptchaToken}
+                autoResetOnExpire={true}
+            />
 
             <button
                 className="mt-6 flex rounded-lg border-4 border-solid border-stone-500 dark:border-stone-400"
