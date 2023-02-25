@@ -1,7 +1,7 @@
+import { Button } from '@/components/button';
 import { Layout } from '@/components/layout';
 import { NextSeoProps } from 'next-seo';
 import Image from 'next/image';
-import Link from 'next/link';
 
 const seoProps: NextSeoProps = {};
 
@@ -27,14 +27,8 @@ export default function Home() {
                 <p className="mt-2 hidden text-slate-600 dark:text-stone-400 sm:block md:text-2xl">
                     Follow my progress on GitHub or connect with me on LinkedIn
                 </p>
-                <Link
-                    className="mt-6 flex rounded-lg border-4 border-solid"
-                    href="/contact"
-                >
-                    <span className="py-2 px-5 text-2xl uppercase text-stone-700 dark:text-stone-300">
-                        Contact Me
-                    </span>
-                </Link>
+
+                <Button className="mt-12" href="/contact" label="CONTACT ME" />
             </div>
         </Layout>
     );

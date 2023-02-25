@@ -1,5 +1,6 @@
 import { FormEventHandler, useState } from 'react';
 import Turnstile from 'react-turnstile';
+import { Button } from './button';
 
 export interface ContactFormProps {
     onMessageSent: () => void;
@@ -55,7 +56,7 @@ export function ContactForm(props: ContactFormProps) {
                     Name
                 </label>
                 <input
-                    className="mt-2 block w-full rounded-md border-transparent bg-white p-2 text-stone-700 placeholder:text-stone-300 focus:border-stone-400 focus:bg-white focus:ring-0 dark:bg-stone-700 dark:text-stone-300 dark:placeholder:text-stone-500 dark:focus:border-stone-600 dark:focus:bg-stone-600"
+                    className="mt-2 block w-full rounded-md border-transparent bg-white text-stone-700 placeholder:text-stone-300 focus:border-stone-400 focus:bg-white focus:ring-0 dark:bg-stone-700 dark:text-stone-300 dark:placeholder:text-stone-500 dark:focus:border-stone-600 dark:focus:bg-stone-600"
                     id="name"
                     name="name"
                     type="text"
@@ -79,7 +80,7 @@ export function ContactForm(props: ContactFormProps) {
                     Email
                 </label>
                 <input
-                    className="mt-2 block w-full rounded-md border-transparent bg-white p-2 text-stone-700 placeholder:text-stone-300 focus:border-stone-400 focus:bg-white focus:ring-0 dark:bg-stone-700 dark:text-stone-300 dark:placeholder:text-stone-500 dark:focus:border-stone-600 dark:focus:bg-stone-600"
+                    className="mt-2 block w-full rounded-md border-transparent bg-white text-stone-700 placeholder:text-stone-300 focus:border-stone-400 focus:bg-white focus:ring-0 dark:bg-stone-700 dark:text-stone-300 dark:placeholder:text-stone-500 dark:focus:border-stone-600 dark:focus:bg-stone-600"
                     id="email"
                     name="email"
                     type="email"
@@ -102,7 +103,7 @@ export function ContactForm(props: ContactFormProps) {
                     Message
                 </label>
                 <textarea
-                    className="mt-2 block w-full rounded-md border-transparent bg-white p-2 text-stone-700 placeholder:text-stone-300 focus:border-stone-400 focus:bg-white focus:ring-0 dark:bg-stone-700 dark:text-stone-300 dark:placeholder:text-stone-500 dark:focus:border-stone-600 dark:focus:bg-stone-600"
+                    className="mt-2 block w-full rounded-md border-transparent bg-white text-stone-700 placeholder:text-stone-300 focus:border-stone-400 focus:bg-white focus:ring-0 dark:bg-stone-700 dark:text-stone-300 dark:placeholder:text-stone-500 dark:focus:border-stone-600 dark:focus:bg-stone-600"
                     id="message"
                     name="message"
                     required={true}
@@ -128,15 +129,12 @@ export function ContactForm(props: ContactFormProps) {
                 autoResetOnExpire={true}
             />
 
-            <button
-                className="mt-6 flex rounded-lg border-4 border-solid border-stone-500 dark:border-stone-400"
+            <Button
+                className="mt-6"
                 type="submit"
+                label={loading ? 'Sending...' : 'Send'}
                 disabled={loading}
-            >
-                <span className="grow py-2 px-5 text-2xl uppercase text-stone-700 dark:text-stone-300">
-                    {loading ? 'Sending...' : 'Send'}
-                </span>
-            </button>
+            />
         </form>
     );
 }

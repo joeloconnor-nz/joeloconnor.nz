@@ -3,6 +3,7 @@ import type { NextSeoProps } from 'next-seo';
 import { useState } from 'react';
 import Link from 'next/link';
 import { ContactForm } from '@/components/contact-form';
+import { Button } from '@/components/button';
 
 const seoProp: NextSeoProps = {
     title: 'Contact',
@@ -23,12 +24,17 @@ export default function Contact() {
                 </h1>
 
                 {messageSent ? (
-                    <div>
+                    <div className="flex flex-col text-stone-700 dark:text-stone-300">
                         <p>
                             Thanks for your message, I&apos;ll get back to you
                             as soon as I can.
                         </p>
-                        <Link href="/">Go back to home</Link>
+
+                        <Button
+                            className="mt-12"
+                            href="/"
+                            label="Return to Home"
+                        />
                     </div>
                 ) : (
                     <ContactForm onMessageSent={handleMessageSent} />
