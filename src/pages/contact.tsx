@@ -1,7 +1,6 @@
 import { Layout } from '@/components/layout';
 import type { NextSeoProps } from 'next-seo';
 import { useState } from 'react';
-import Link from 'next/link';
 import { ContactForm } from '@/components/contact-form';
 import { Button } from '@/components/button';
 
@@ -18,20 +17,21 @@ export default function Contact() {
 
     return (
         <Layout seo={seoProp}>
-            <div className="mx-auto flex w-full max-w-lg flex-col">
-                <h1 className="mb-10 text-4xl text-stone-700 dark:text-stone-300">
-                    {messageSent ? 'Message sent' : 'Send me a message'}
+            <div className="mx-auto flex w-full flex-col border-t-4 border-t-purple-700 bg-white px-6 pt-8 pb-12 shadow sm:my-8 sm:max-w-xl sm:px-10">
+                <h1 className="mb-8 text-2xl font-semibold text-stone-700 dark:text-stone-300 sm:mb-10 sm:text-3xl">
+                    {messageSent
+                        ? 'Thanks for your message 🙈'
+                        : 'Send me a message'}
                 </h1>
 
                 {messageSent ? (
                     <div className="flex flex-col text-stone-700 dark:text-stone-300">
-                        <p>
-                            Thanks for your message, I&apos;ll get back to you
-                            as soon as I can.
+                        <p className="text-stone-600">
+                            I&apos;ll get back to you soon.
                         </p>
 
                         <Button
-                            className="mt-12"
+                            className="mt-20"
                             href="/"
                             label="Return to Home"
                         />
