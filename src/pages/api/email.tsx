@@ -1,5 +1,5 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import { ContactEmail } from '@/components/contact-email';
+import { ContactEmail } from '@/emails/contact';
 import { validateCloudflareTurnstileToken } from '@/utils/cloudflare-turnstile';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import nodemailer from 'nodemailer';
