@@ -12,7 +12,10 @@ export default async function handler(
     console.log('Sending email...');
 
     const formData = JSON.parse(req.body);
-    const { name, email, message, captchaToken } = formData;
+    const name = formData.name.trim();
+    const email = formData.email.trim();
+    const message = formData.message.trim();
+    const { captchaToken } = formData;
 
     // Name must be at least 1 character long
     if (name.length === 0) {

@@ -60,6 +60,7 @@ export function ContactForm(props: ContactFormProps) {
                     id="name"
                     name="name"
                     type="text"
+                    autoComplete="name"
                     required={true}
                     maxLength={100}
                     placeholder="John Doe"
@@ -84,6 +85,7 @@ export function ContactForm(props: ContactFormProps) {
                     id="email"
                     name="email"
                     type="email"
+                    autoComplete="email"
                     required={true}
                     placeholder="john@example.nz"
                     disabled={loading}
