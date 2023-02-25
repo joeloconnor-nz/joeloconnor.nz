@@ -14,9 +14,7 @@ export function Layout(props: LayoutProps) {
             <NextSeo {...props.seo} />
             <div className="mx-auto flex min-h-[100dvh] max-w-screen-xl flex-col">
                 <Header />
-                <main className="flex grow flex-col py-8 px-6">
-                    {props.children}
-                </main>
+                <main className="flex grow flex-col">{props.children}</main>
                 <Footer />
             </div>
         </>
