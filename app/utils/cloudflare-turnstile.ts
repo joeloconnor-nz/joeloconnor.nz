@@ -1,7 +1,5 @@
-import { NextApiRequest } from 'next';
-
 export async function validateCloudflareTurnstileToken(
-    req: NextApiRequest,
+    request: Request,
     captchaToken: string
 ): Promise<boolean> {
     const secretKey = process.env.CLOUDFLARE_TURNSTILE_SECRET_KEY;
@@ -12,7 +10,10 @@ export async function validateCloudflareTurnstileToken(
     const formData = new URLSearchParams();
     formData.append('secret', secretKey);
     formData.append('response', captchaToken);
-    formData.append('remoteip', req.headers['x-forwarded-for'] as string);
+    formData.append(
+        'remoteip',
+        request.headers.get('x-forwarded-for') as string
+    );
 
     const url = 'https://challenges.cloudflare.com/turnstile/v0/siteverify';
     const result = await fetch(url, {
