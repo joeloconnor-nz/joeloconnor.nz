@@ -1,6 +1,6 @@
 'use client';
 import { ContactFormData } from '@/contact/form-data';
-import { useRouter } from 'next/navigation';
+import { redirect, useRouter } from 'next/navigation';
 import { FormEventHandler, useState } from 'react';
 import Turnstile from 'react-turnstile';
 import { Button } from '../components/button';
@@ -45,11 +45,10 @@ export function ContactForm() {
         if (response.ok) {
             router.replace('/contact/sent');
         } else {
+            setLoading(false);
             const body = await response.json();
             alert(`Failed to send email. ${body.message}`);
         }
-
-        setLoading(false);
     };
 
     return (
