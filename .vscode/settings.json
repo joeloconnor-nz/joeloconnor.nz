@@ -1,4 +1,6 @@
 {
     "cSpell.words": ["joeloconnor"],
-    "cSpell.language": "en-GB"
+    "cSpell.language": "en-GB",
+    "typescript.tsdk": "node_modules/typescript/lib",
+    "typescript.enablePromptUseWorkspaceTsdk": true
 }

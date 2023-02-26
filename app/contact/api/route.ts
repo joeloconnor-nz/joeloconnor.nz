@@ -1,17 +1,13 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import { ContactEmail } from '@/emails/contact';
+import { ContactFormData } from '@/contact/form-data';
 import { validateCloudflareTurnstileToken } from '@/utils/cloudflare-turnstile';
-import type { NextApiRequest, NextApiResponse } from 'next';
+import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
-import { renderToString } from 'react-dom/server';
+import { getContactEmailString } from './email-temp';
 
-export default async function handler(
-    req: NextApiRequest,
-    res: NextApiResponse<any>
-) {
+export async function POST(request: Request) {
     console.log('Sending email...');
 
-    const formData = JSON.parse(req.body);
+    const formData: ContactFormData = await request.json();
     const name = formData.name.trim();
     const email = formData.email.trim();
     const message = formData.message.trim();
@@ -19,64 +15,64 @@ export default async function handler(
 
     // Name must be at least 1 character long
     if (name.length === 0) {
-        res.status(400).send({
-            message: 'Name must be at least 1 character long.',
-        });
-        return;
+        return NextResponse.json(
+            { message: 'Name must be at least 1 character long.' },
+            { status: 400 }
+        );
     }
 
     // Name can be no longer than 100 characters long
     if (name.length > 100) {
-        res.status(400).send({
-            message: 'Name must not be longer than 100 characters.',
-        });
-        return;
+        return NextResponse.json(
+            { message: 'Name must not be longer than 100 characters.' },
+            { status: 400 }
+        );
     }
 
     // Email must be a valid email address
     const mailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,63})+$/;
     if (!mailFormat.test(email)) {
-        res.status(400).send({
-            message: 'Email must contain a valid email address.',
-        });
-        return;
+        return NextResponse.json(
+            { message: 'Email must contain a valid email address.' },
+            { status: 400 }
+        );
     }
 
     // Message must be at least 10 characters long
     if (message.length < 10) {
-        res.status(400).send({
-            message: 'Message must be at least 10 characters long.',
-        });
-        return;
+        return NextResponse.json(
+            { message: 'Message must be at least 10 characters long.' },
+            { status: 400 }
+        );
     }
 
     // Message can be no longer than 2000 characters long
     if (message.length > 2000) {
-        res.status(400).send({
-            message: 'Message must not be longer than 2000 characters.',
-        });
-        return;
+        return NextResponse.json(
+            { message: 'Message must not be longer than 2000 characters.' },
+            { status: 400 }
+        );
     }
 
     // Validate that captchaToken is provided
     if (captchaToken === undefined || captchaToken.length === 0) {
-        res.status(400).send({
-            message: 'Cloudflare Turnstile captcha token must be provided.',
-        });
-        return;
+        return NextResponse.json(
+            { message: 'Cloudflare Turnstile captcha token must be provided.' },
+            { status: 400 }
+        );
     }
 
     // Validate captchaToken against Cloudflare API
     const isCaptchaValid = await validateCloudflareTurnstileToken(
-        req,
+        request,
         captchaToken
     );
 
     if (isCaptchaValid === false) {
-        res.status(400).send({
-            message: 'Cloudflare Turnstile captcha token provided is invalid.',
-        });
-        return;
+        return NextResponse.json(
+            { message: 'Cloudflare Turnstile token provided is invalid.' },
+            { status: 400 }
+        );
     }
 
     // create reusable transporter object using the default SMTP transport
@@ -92,7 +88,7 @@ export default async function handler(
     });
 
     // create email HTML using react
-    const html = renderToString(<ContactEmail data={formData} />);
+    const html = getContactEmailString(formData);
 
     // send mail with defined transport object
     let info = await transporter.sendMail({
@@ -107,5 +103,5 @@ export default async function handler(
     console.log('Message sent: %s', info.messageId);
     // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
 
-    res.status(200).json({ message: 'Message sent' });
+    return NextResponse.json({ message: 'Message sent.' }, { status: 200 });
 }

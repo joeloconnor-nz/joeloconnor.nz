@@ -1,12 +1,12 @@
+'use client';
+import { ContactFormData } from '@/contact/form-data';
+import { useRouter } from 'next/navigation';
 import { FormEventHandler, useState } from 'react';
 import Turnstile from 'react-turnstile';
-import { Button } from './button';
+import { Button } from '../components/button';
 
-export interface ContactFormProps {
-    onMessageSent: () => void;
-}
-
-export function ContactForm(props: ContactFormProps) {
+export function ContactForm() {
+    const router = useRouter();
     const [loading, setLoading] = useState(false);
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
@@ -22,7 +22,13 @@ export function ContactForm(props: ContactFormProps) {
 
     const handleSubmit: FormEventHandler<HTMLFormElement> = async (event) => {
         event.preventDefault();
-        const formData = { name, email, message, captchaToken };
+
+        const formData: ContactFormData = {
+            name,
+            email,
+            message,
+            captchaToken,
+        };
 
         if (formData.captchaToken === '') {
             alert('Please complete the captcha verification');
@@ -31,13 +37,13 @@ export function ContactForm(props: ContactFormProps) {
 
         setLoading(true);
 
-        const response = await fetch('/api/email', {
+        const response = await fetch('/contact/api', {
             method: 'POST',
             body: JSON.stringify(formData),
         });
 
         if (response.ok) {
-            props.onMessageSent();
+            router.replace('/contact/sent');
         } else {
             const body = await response.json();
             alert(`Failed to send email. ${body.message}`);

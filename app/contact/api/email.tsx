@@ -1,4 +1,5 @@
-import { ContactFormData } from '@/types/contact-form-data';
+import { ContactFormData } from '@/contact/form-data';
+import { renderToString } from 'react-dom/server';
 
 export interface ContactEmailProps {
     data: ContactFormData;
@@ -60,4 +61,8 @@ export function ContactEmail(props: ContactEmailProps) {
             </p>
         </div>
     );
+}
+
+export function getContactEmailString(data: ContactFormData): string {
+    return renderToString(<ContactEmail data={data} />);
 }
