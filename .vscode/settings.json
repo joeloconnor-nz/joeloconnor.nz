@@ -2,5 +2,6 @@
     "cSpell.words": ["joeloconnor"],
     "cSpell.language": "en-GB",
     "typescript.tsdk": "node_modules/typescript/lib",
-    "typescript.enablePromptUseWorkspaceTsdk": true
+    "typescript.enablePromptUseWorkspaceTsdk": true,
+    "svg.preview.background": "transparent"
 }
