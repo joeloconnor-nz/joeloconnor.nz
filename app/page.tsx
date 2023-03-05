@@ -23,7 +23,11 @@ export default function Home() {
                 Follow my progress on GitHub or connect with me on LinkedIn
             </p>
 
-            <Button className="mt-12" href="/contact" label="CONTACT ME" />
+            <Button
+                className="mt-12"
+                href="/blog/posts/first"
+                label="READ MY BLOG"
+            />
         </div>
     );
 }
