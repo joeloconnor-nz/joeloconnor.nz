@@ -34,7 +34,7 @@ export function Footer() {
                         target="_blank"
                         rel="noopener noreferrer"
                         title="Message me on Telegram"
-                        className="transition-colors hover:text-[#3a76f0]"
+                        className="transition-colors hover:text-[#229ED9]"
                     >
                         <TelegramLogo />
                     </a>
