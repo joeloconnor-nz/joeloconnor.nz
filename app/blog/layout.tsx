@@ -4,10 +4,12 @@ export default function BlogLayout({
     children: React.ReactNode;
 }) {
     return (
-        <section className="w-full border-t-4 border-t-purple-700 bg-white px-6 pt-12 pb-16 shadow-xl shadow-slate-700/10 ring-1 ring-gray-900/5 md:mx-auto md:my-12 md:max-w-3xl lg:max-w-4xl lg:pt-16 lg:pb-28">
-            <article className="prose prose-slate mx-auto lg:prose-lg">
-                {children}
+        <div className="pb-6 md:px-6 md:py-12">
+            <article className="w-full border-t-4 border-t-purple-700 bg-white px-6 pt-12 pb-16 shadow-xl shadow-stone-700/10 ring-1 ring-stone-900/5 dark:bg-stone-800 dark:shadow-stone-800/10 md:px-12 md:pt-16 lg:pt-24 lg:pb-28">
+                <div className="prose prose-lg prose-stone mx-auto prose-figure:-mx-6 prose-figcaption:px-6 prose-figcaption:italic prose-pre:-mx-6 prose-pre:rounded-none dark:prose-invert md:prose-figcaption:px-0 md:prose-pre:rounded-lg">
+                    <section>{children}</section>
+                </div>
             </article>
-        </section>
+        </div>
     );
 }
