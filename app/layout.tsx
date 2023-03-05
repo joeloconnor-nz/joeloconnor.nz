@@ -5,7 +5,10 @@ import { Analytics } from './components/analytics';
 import './globals.css';
 
 export const metadata: Metadata = {
-    title: "Joel O'Connor",
+    title: {
+        default: "Joel O'Connor",
+        template: "%s | Joel O'Connor",
+    },
     description:
         "The personal website of Joel O'Connor. Follow my progress as I learn software development",
     authors: [{ name: "Joel O'Connor" }],

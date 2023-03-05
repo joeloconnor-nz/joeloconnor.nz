@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { ContactForm } from './form';
 
 export const metadata: Metadata = {
-    title: "Contact | Joel O'Connor",
+    title: 'Contact',
 };
 
 export default function Contact() {
