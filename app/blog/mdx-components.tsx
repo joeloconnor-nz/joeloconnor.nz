@@ -7,4 +7,5 @@ export const mdxComponents: MDXComponents = {
     a: (props) => <Link href={props.href as string}>{props.children}</Link>,
     Button,
     Image,
+    Link,
 };
