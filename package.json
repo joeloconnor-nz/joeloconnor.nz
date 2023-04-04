@@ -9,26 +9,32 @@
         "lint": "next lint"
     },
     "dependencies": {
+        "@opentelemetry/api": "^1.4.0",
         "@types/node": "18.11.18",
         "@types/react": "18.0.27",
         "@types/react-dom": "18.0.10",
-        "@vercel/analytics": "^0.1.8",
+        "@vercel/analytics": "^0.1.11",
+        "contentlayer": "^0.3.1",
+        "date-fns": "^2.29.3",
         "eslint": "8.32.0",
-        "eslint-config-next": "13.2.1",
-        "next": "13.2.1",
+        "eslint-config-next": "13.2.4",
+        "next": "13.2.4",
+        "next-contentlayer": "^0.3.1",
         "nodemailer": "^6.9.0",
         "react": "18.2.0",
         "react-dom": "18.2.0",
-        "react-turnstile": "^1.0.6",
+        "react-turnstile": "^1.1.0",
         "typescript": "4.9.4"
     },
     "devDependencies": {
         "@tailwindcss/forms": "^0.5.3",
+        "@tailwindcss/typography": "^0.5.9",
+        "@types/mdx": "^2.0.3",
         "@types/nodemailer": "^6.4.7",
         "autoprefixer": "^10.4.13",
         "postcss": "^8.4.21",
         "prettier": "^2.8.3",
-        "prettier-plugin-tailwindcss": "^0.2.1",
-        "tailwindcss": "^3.2.4"
+        "prettier-plugin-tailwindcss": "^0.2.6",
+        "tailwindcss": "^3.3.1"
     }
 }
