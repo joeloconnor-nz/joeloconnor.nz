@@ -1,7 +1,7 @@
 import { Footer } from '@/components/footer';
 import { Header } from '@/components/header';
+import { Analytics } from '@vercel/analytics/react';
 import { Metadata } from 'next';
-import { Analytics } from './components/analytics';
 import './globals.css';
 
 export const metadata: Metadata = {
