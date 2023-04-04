@@ -1,6 +1,6 @@
 'use client';
 import { ContactFormData } from '@/contact/form-data';
-import { redirect, useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { FormEventHandler, useState } from 'react';
 import Turnstile from 'react-turnstile';
 import { Button } from '../components/button';
@@ -133,7 +133,7 @@ export function ContactForm() {
             <Turnstile
                 sitekey={turnstileSiteKey}
                 onVerify={setCaptchaToken}
-                autoResetOnExpire={true}
+                refreshExpired="auto"
             />
 
             <Button
