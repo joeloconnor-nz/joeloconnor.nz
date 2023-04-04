@@ -28,7 +28,7 @@ export default function RootLayout({
 }) {
     return (
         <html lang="en">
-            <body className="bg-stone-100 dark:bg-stone-900">
+            <body className="bg-stone-50 dark:bg-stone-900">
                 <div className="mx-auto flex min-h-[100dvh] max-w-screen-xl flex-col">
                     <Header />
                     <main className="flex grow flex-col">{children}</main>
