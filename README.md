@@ -1,38 +1,83 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# joeloconnor.nz
+
+Welcome to the personal website and blog of Joel O'Connor. This is a [Next.js](https://nextjs.org/) site bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app), and it uses the beta `app` directory for pages, layouts, and route handlers.
+
+This site uses [Tailwind CSS](https://tailwindcss.com) along with the [@tailwindcss/typography](https://tailwindcss.com/docs/typography-plugin) plugin for styling.
+
+I'm currently using [nodemailer](https://nodemailer.com) to send contact emails, but may look to replace this with a more robust solution in the near future.
+
+My blog is authored using MDX and [Contentlayer](https://www.contentlayer.dev). I'll attempt to regularly post articles about my hobbies, projects, and learning.
+
+## URLs
+
+You can visit my site at the following URLs:
+
+-   https://joeloconnor.nz - the live site
+-   https://dev.joeloconnor.nz - the current development site
+
+## Planned Features/Tasks
+
+-   Home page
+    -   [x] Social media links
+    -   [ ] Work experience
+    -   [ ] CV download link
+    -   [ ] Blog articles
+-   Blog
+    -   [ ] Index page
+    -   [x] Post page
+    -   [ ] Categories
+    -   [ ] Social sharing images
+    -   [ ] Styled code blocks
+    -   [ ] RSS feed
+-   Header
+    -   [ ] Blog link
+    -   [ ] Mobile-friendly menu
+    -   [ ] Dark mode toggle
+    -   [ ] Logo
+-   Footer
+    -   [ ] Site links
+    -   [ ] Remove social media links
+-   Contact form
+    -   [x] Captcha
+    -   [x] Input validation
+    -   [ ] Faster email service
+-   About page
+    -   [ ] Social media links
+    -   [ ] NZ map with POIs
 
 ## Getting Started
 
-First, run the development server:
+To run this site locally, first install the npm dependencies:
+
+```bash
+npm install
+```
+
+Next, create a file named `.env.local` in the root of your project and the following environment variables:
+
+```properties
+# SMTP Credentials
+SMTP_HOST=
+SMTP_PORT=
+SMTP_USER=
+SMTP_PASSWORD=
+SMTP_FROM_ADDRESS=
+SMTP_TO_ADDRESS=
+```
+
+Next, run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Finally, open [http://localhost:3000](http://localhost:3000) in your browser to view the website.
 
 ## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+To learn more about the technologies used in this site, see the following resources:
 
--   [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
--   [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+-   [Next.js](https://nextjs.org/docs) - the official Next.js documentation
+-   [Tailwind CSS](https://tailwindcss.com/docs) - the official Tailwind CSS documentation
+-   [Contentlayer](https://www.contentlayer.dev/docs) - the official Contentlayer documentation
+-   [MDX](https://mdxjs.com/docs) - the official MDX documentation

@@ -25,7 +25,7 @@ export default function Home() {
 
             <Button
                 className="mt-12"
-                href="/blog/first-post"
+                href="/blog/introduction"
                 label="READ MY BLOG"
             />
         </div>
