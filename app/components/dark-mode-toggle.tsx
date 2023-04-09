@@ -1,20 +1,44 @@
 'use client';
 
-import { MoonIcon } from '@heroicons/react/24/solid';
+import { MoonIcon, SunIcon } from '@heroicons/react/24/solid';
+import { useEffect, useState } from 'react';
+import { CircleIcon } from './icons/circle-icon';
 
 export function DarkModeToggle() {
+    const [isDarkMode, setIsDarkMode] = useState<boolean>();
+
+    useEffect(() => {
+        const isDark = document.documentElement.classList.contains('dark');
+        setIsDarkMode(isDark);
+    }, []);
+
     const toggleDarkMode = () => {
-        document.documentElement.classList.toggle('dark');
+        const isDark = document.documentElement.classList.toggle('dark');
+
+        localStorage.setItem('isDarkMode', JSON.stringify(isDark));
+        setIsDarkMode(isDark);
     };
+
+    if (isDarkMode === undefined) {
+        return (
+            <div className="p-2">
+                <CircleIcon />
+            </div>
+        );
+    }
 
     return (
         <button
             className="p-2 transition-colors hover:text-stone-500 dark:text-stone-400"
             aria-label="Dark Mode"
-            aria-pressed={true}
+            aria-pressed={isDarkMode}
             onClick={toggleDarkMode}
         >
-            <MoonIcon className="h-6 w-6" />
+            {isDarkMode ? (
+                <SunIcon className="h-6 w-6" />
+            ) : (
+                <MoonIcon className="h-6 w-6" />
+            )}
         </button>
     );
 }
