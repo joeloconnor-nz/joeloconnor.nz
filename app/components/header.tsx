@@ -1,5 +1,5 @@
-import { MoonIcon } from '@heroicons/react/24/solid';
 import Link from 'next/link';
+import { DarkModeToggle } from './dark-mode-toggle';
 import { HeaderNav } from './header-nav';
 
 export function Header() {
@@ -14,13 +14,7 @@ export function Header() {
 
             <div className="flex flex-row items-center gap-2">
                 <HeaderNav />
-
-                <button
-                    className="p-2 transition-colors hover:text-stone-500 dark:text-stone-400"
-                    aria-label="Toggle Dark Mode"
-                >
-                    <MoonIcon className="h-6 w-6" />
-                </button>
+                <DarkModeToggle />
             </div>
         </header>
     );
