@@ -42,7 +42,7 @@ export function DarkModeToggle() {
 
     if (isDarkMode === undefined) {
         return (
-            <div className="p-2">
+            <div className="p-2 text-stone-700 dark:text-stone-300">
                 <CircleIcon />
             </div>
         );
@@ -50,7 +50,7 @@ export function DarkModeToggle() {
 
     return (
         <button
-            className="p-2 transition-colors hover:text-stone-500 dark:text-stone-400"
+            className="p-2 text-stone-700 transition-colors hover:text-purple-500 dark:text-stone-300 dark:hover:text-purple-500"
             aria-label="Dark Mode"
             aria-pressed={isDarkMode}
             onClick={toggleDarkMode}
