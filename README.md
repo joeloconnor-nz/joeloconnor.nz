@@ -45,7 +45,8 @@ You can visit my site at the following URLs:
     -   [ ] Social media links
     -   [ ] NZ map with POIs
 -   Bug fixes
-    -   [ ] Captcha theme doesn't update when dark mode toggle is pressed
+    -   [x] Captcha theme doesn't update when dark mode toggle is pressed
+    -   [ ] Can't toggle to dark mode when multiple tabs are open in Safari
 
 ## Getting Started
 

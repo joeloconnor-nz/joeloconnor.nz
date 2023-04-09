@@ -28,7 +28,7 @@ export default function RootLayout({
 }) {
     return (
         <html lang="en" suppressHydrationWarning>
-            <body className="bg-stone-50 dark:bg-stone-900">
+            <body className="bg-stone-50 transition-colors duration-200 dark:bg-stone-900">
                 {/* eslint-disable-next-line @next/next/no-sync-scripts */}
                 <script src="/scripts/dark-mode.js" />
                 <div className="mx-auto flex min-h-[100dvh] max-w-screen-xl flex-col">
