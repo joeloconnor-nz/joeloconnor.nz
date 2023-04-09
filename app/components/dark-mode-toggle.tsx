@@ -6,21 +6,32 @@ import { CircleIcon } from './icons/circle-icon';
 
 export function DarkModeToggle() {
     const [isDarkMode, setIsDarkMode] = useState<boolean>();
+    const [prefersDarkMode, setPrefersDarkMode] = useState<boolean>();
 
     useEffect(() => {
-        const isDark = document.documentElement.classList.contains('dark');
-        setIsDarkMode(isDark);
+        const darkMediaQuery = window.matchMedia(
+            '(prefers-color-scheme: dark)'
+        );
+
+        const updateDarkMode = () => {
+            const isDark = document.documentElement.classList.contains('dark');
+            setIsDarkMode(isDark);
+            setPrefersDarkMode(darkMediaQuery.matches);
+        };
+
+        updateDarkMode();
+        darkMediaQuery.addEventListener('change', updateDarkMode);
+
+        return () => {
+            darkMediaQuery.removeEventListener('change', updateDarkMode);
+        };
     }, []);
 
     const toggleDarkMode = () => {
         const isDark = document.documentElement.classList.toggle('dark');
         setIsDarkMode(isDark);
 
-        const prefersDark = window.matchMedia(
-            '(prefers-color-scheme: dark)'
-        ).matches;
-
-        if (isDark === prefersDark) {
+        if (isDark === prefersDarkMode) {
             localStorage.removeItem('isDarkMode');
         } else {
             localStorage.setItem('isDarkMode', JSON.stringify(isDark));

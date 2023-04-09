@@ -20,3 +20,5 @@ function updateDarkMode() {
 }
 
 updateDarkMode();
+
+darkMediaQuery.addEventListener('change', updateDarkMode);
