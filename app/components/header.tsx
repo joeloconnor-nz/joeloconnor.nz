@@ -1,6 +1,6 @@
+import { MoonIcon } from '@heroicons/react/24/solid';
 import Link from 'next/link';
 import { HeaderNav } from './header-nav';
-import { MoonIcon } from './icons/moon';
 
 export function Header() {
     return (
@@ -19,7 +19,7 @@ export function Header() {
                 className="hidden p-2 transition-colors hover:text-stone-500 dark:text-stone-400"
                 aria-label="Toggle Dark Mode"
             >
-                <MoonIcon />
+                <MoonIcon className="h-6 w-6" />
             </button>
         </header>
     );
