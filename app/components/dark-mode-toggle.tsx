@@ -21,9 +21,11 @@ export function DarkModeToggle() {
 
         updateDarkMode();
         darkMediaQuery.addEventListener('change', updateDarkMode);
+        window.addEventListener('storage', updateDarkMode);
 
         return () => {
             darkMediaQuery.removeEventListener('change', updateDarkMode);
+            window.removeEventListener('storage', updateDarkMode);
         };
     }, []);
 
