@@ -27,8 +27,10 @@ export default function RootLayout({
     children: React.ReactNode;
 }) {
     return (
-        <html lang="en">
+        <html lang="en" suppressHydrationWarning>
             <body className="bg-stone-50 dark:bg-stone-900">
+                {/* eslint-disable-next-line @next/next/no-sync-scripts */}
+                <script src="/scripts/dark-mode.js" />
                 <div className="mx-auto flex min-h-[100dvh] max-w-screen-xl flex-col">
                     <Header />
                     <main className="flex grow flex-col">{children}</main>

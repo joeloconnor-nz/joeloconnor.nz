@@ -1,6 +1,6 @@
 import Link from 'next/link';
+import { DarkModeToggle } from './dark-mode-toggle';
 import { HeaderNav } from './header-nav';
-import { MoonIcon } from './icons/moon';
 
 export function Header() {
     return (
@@ -12,15 +12,10 @@ export function Header() {
                 joeloconnor.nz
             </Link>
 
-            <HeaderNav />
-
-            {/* Temporarily hiding dark mode toggle until implemented */}
-            <button
-                className="hidden p-2 transition-colors hover:text-stone-500 dark:text-stone-400"
-                aria-label="Toggle Dark Mode"
-            >
-                <MoonIcon />
-            </button>
+            <div className="flex flex-row items-center gap-2">
+                <HeaderNav />
+                <DarkModeToggle />
+            </div>
         </header>
     );
 }
