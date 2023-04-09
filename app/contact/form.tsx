@@ -1,5 +1,6 @@
 'use client';
 import { ContactFormData } from '@/contact/form-data';
+import { useDarkMode } from '@/hooks/use-dark-mode';
 import { useRouter } from 'next/navigation';
 import { FormEventHandler, useState } from 'react';
 import Turnstile from 'react-turnstile';
@@ -12,6 +13,7 @@ export function ContactForm() {
     const [email, setEmail] = useState('');
     const [message, setMessage] = useState('');
     const [captchaToken, setCaptchaToken] = useState('');
+    const { isDarkMode } = useDarkMode();
 
     const turnstileSiteKey =
         process.env.NEXT_PUBLIC_CLOUDFLARE_TURNSTILE_SITE_KEY;
@@ -131,9 +133,11 @@ export function ContactForm() {
             </div>
 
             <Turnstile
+                className="h-[65px] w-[300px]"
                 sitekey={turnstileSiteKey}
                 onVerify={setCaptchaToken}
                 refreshExpired="auto"
+                theme={isDarkMode ? 'dark' : 'light'}
             />
 
             <Button
