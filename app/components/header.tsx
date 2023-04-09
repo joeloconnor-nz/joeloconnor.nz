@@ -12,15 +12,16 @@ export function Header() {
                 joeloconnor.nz
             </Link>
 
-            <HeaderNav />
+            <div className="flex flex-row items-center gap-2">
+                <HeaderNav />
 
-            {/* Temporarily hiding dark mode toggle until implemented */}
-            <button
-                className="hidden p-2 transition-colors hover:text-stone-500 dark:text-stone-400"
-                aria-label="Toggle Dark Mode"
-            >
-                <MoonIcon className="h-6 w-6" />
-            </button>
+                <button
+                    className="p-2 transition-colors hover:text-stone-500 dark:text-stone-400"
+                    aria-label="Toggle Dark Mode"
+                >
+                    <MoonIcon className="h-6 w-6" />
+                </button>
+            </div>
         </header>
     );
 }
