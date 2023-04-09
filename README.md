@@ -32,7 +32,7 @@ You can visit my site at the following URLs:
 -   Header
     -   [ ] Blog link
     -   [ ] Mobile-friendly menu
-    -   [ ] Dark mode toggle
+    -   [x] Dark mode toggle
     -   [ ] Logo
 -   Footer
     -   [ ] Site links
@@ -44,6 +44,8 @@ You can visit my site at the following URLs:
 -   About page
     -   [ ] Social media links
     -   [ ] NZ map with POIs
+-   Bug fixes
+    -   [ ] Captcha theme doesn't update when dark mode toggle is pressed
 
 ## Getting Started
 
