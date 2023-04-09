@@ -14,9 +14,17 @@ export function DarkModeToggle() {
 
     const toggleDarkMode = () => {
         const isDark = document.documentElement.classList.toggle('dark');
-
-        localStorage.setItem('isDarkMode', JSON.stringify(isDark));
         setIsDarkMode(isDark);
+
+        const prefersDark = window.matchMedia(
+            '(prefers-color-scheme: dark)'
+        ).matches;
+
+        if (isDark === prefersDark) {
+            localStorage.removeItem('isDarkMode');
+        } else {
+            localStorage.setItem('isDarkMode', JSON.stringify(isDark));
+        }
     };
 
     if (isDarkMode === undefined) {
