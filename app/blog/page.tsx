@@ -1,7 +1,7 @@
+import { Title } from '@/components/title';
 import { allPosts, Post } from 'contentlayer/generated';
 import { format, parseISO } from 'date-fns';
 import Link from 'next/link';
-import Balancer from 'react-wrap-balancer';
 
 export default function Blog() {
     const posts = allPosts
@@ -14,11 +14,9 @@ export default function Blog() {
 
     return (
         <div className="p-6 py-8">
-            <h1 className="text-3xl font-medium tracking-tight">
-                <Balancer>
-                    Hellow worlds This is a title which i am not sure on yet
-                </Balancer>
-            </h1>
+            <Title>
+                Hellow worlds This is a title which i am not sure on yet
+            </Title>
 
             <ul className="mt-12 grid gap-8 md:grid-cols-2">
                 {posts.map((post) => (
