@@ -23,7 +23,7 @@ You can visit my site at the following URLs:
     -   [ ] CV download link
     -   [ ] Blog articles
 -   Blog
-    -   [ ] Index page
+    -   [x] Index page
     -   [x] Post page
     -   [ ] Categories
     -   [ ] Social sharing images
