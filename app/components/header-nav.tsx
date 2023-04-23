@@ -5,7 +5,7 @@ export function HeaderNav() {
     return (
         <nav>
             <ul className="flex gap-2">
-                <HeaderNavLink href="/blog/introduction">Blog</HeaderNavLink>
+                <HeaderNavLink href="/blog">Blog</HeaderNavLink>
                 <HeaderNavLink href="/contact">Contact</HeaderNavLink>
             </ul>
         </nav>
