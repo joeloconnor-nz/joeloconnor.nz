@@ -11,12 +11,16 @@ export default function Blog() {
             const timeB = new Date(b.date).getTime();
             return timeB - timeA;
         });
+    const postCount = posts.length;
 
     return (
         <div className="p-6 py-8 ">
-            <div className="max-w-xl">
+            <div className="max-w-xl pr-10 tracking-tight">
                 <Title>Blog</Title>
-                <p className="mt-4 pr-10 text-lg tracking-tight text-zinc-600 dark:text-zinc-400">
+                <div className="mt-3 text-xl  text-zinc-400 dark:text-zinc-500">
+                    {postCount === 1 ? '1 Article' : `${postCount} Articles`}
+                </div>
+                <p className="mt-6 text-lg text-zinc-600 dark:text-zinc-400">
                     This includes a diverse range of posts covering topics such
                     as DIY projects, pets, gardening, technology trends,
                     software development insights, and more.
@@ -53,7 +57,7 @@ function BlogPost(props: BlogPostProps) {
                     {post.description}
                 </p>
                 <div
-                    className="font-medium text-stone-400 transition-colors group-hover:text-purple-600 dark:text-stone-500 group-hover:dark:text-purple-700/80"
+                    className="text-end font-medium text-stone-400 transition-colors group-hover:text-purple-600 dark:text-stone-500 group-hover:dark:text-purple-700/80"
                     aria-hidden={true}
                 >
                     Read Article
