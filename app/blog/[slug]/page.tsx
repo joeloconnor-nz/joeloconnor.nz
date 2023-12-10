@@ -47,7 +47,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
                             {format(parseISO(post.date), 'd LLLL yyyy')}
                         </time>
                     </header>
-                    <div className="prose prose-stone max-w-full dark:prose-invert prose-figure:-mx-6 prose-figcaption:px-6 prose-figcaption:italic prose-pre:-mx-6 prose-pre:rounded-none md:prose-figcaption:px-0 md:prose-pre:rounded-lg">
+                    <div className="prose prose-xl prose-stone max-w-full dark:prose-invert md:prose-2xl prose-figure:-mx-6 prose-figcaption:px-6 prose-figcaption:italic prose-pre:-mx-6 prose-pre:rounded-none md:prose-figcaption:px-0 md:prose-pre:rounded-lg">
                         <MDXContent components={mdxComponents} />
                     </div>
                 </article>
