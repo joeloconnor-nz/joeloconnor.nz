@@ -33,7 +33,7 @@ You can visit my site at the following URLs:
     -   [ ] Blog link
     -   [ ] Mobile-friendly menu
     -   [x] Dark mode toggle
-    -   [ ] Logo
+    -   [x] Logo
 -   Footer
     -   [ ] Site links
     -   [ ] Remove social media links
@@ -44,9 +44,12 @@ You can visit my site at the following URLs:
 -   About page
     -   [ ] Social media links
     -   [ ] NZ map with POIs
--   Bug fixes
+-   #### Bug fixes
     -   [x] Captcha theme doesn't update when dark mode toggle is pressed
     -   [ ] Can't toggle to dark mode when multiple tabs are open in Safari
+-   #### Improvements
+    -   [ ] Update styles
+    -   [ ] Logo to use primary colour on homepage. Currently the other way around
 
 ## Getting Started
 
