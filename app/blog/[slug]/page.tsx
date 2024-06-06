@@ -1,9 +1,9 @@
 import { Title } from '@/components/title';
-import { allPosts, Post } from 'contentlayer/generated';
+import { allPosts, Post } from '.contentlayer/generated';
 import { format, parseISO } from 'date-fns';
-import { Metadata } from 'next';
-import { useMDXComponent } from 'next-contentlayer/hooks';
+import { useMDXComponent } from 'next-contentlayer2/hooks';
 import { notFound } from 'next/navigation';
+import { Metadata } from 'next/types';
 import { mdxComponents } from '../mdx-components';
 
 function getPost(slug: string): Post {
