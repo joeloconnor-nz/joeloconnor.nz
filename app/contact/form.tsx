@@ -6,7 +6,7 @@ import Turnstile from 'react-turnstile'
 
 import { ContactFormData } from '@/contact/form-data'
 import { useDarkMode } from '@/hooks/use-dark-mode'
-import { Button } from '../components/button'
+import { Button } from '../components/ui/button'
 
 export function ContactForm() {
   const router = useRouter()
@@ -61,7 +61,7 @@ export function ContactForm() {
           Name
         </label>
         <input
-          className="mt-2 block w-full rounded-md border-transparent bg-stone-100 text-stone-700 placeholder:text-stone-400 focus:border-stone-400 focus:bg-white focus:ring-0 dark:bg-stone-700 dark:text-stone-300 dark:placeholder:text-stone-500 dark:focus:border-stone-600 dark:focus:bg-stone-600"
+          className="mt-2 block w-full rounded-md border-transparent bg-stone-100 p-2 text-stone-700 placeholder:text-stone-400 focus:border-stone-400 focus:bg-white focus:ring-0 dark:bg-stone-700 dark:text-stone-300 dark:placeholder:text-stone-500 dark:focus:border-stone-600 dark:focus:bg-stone-600"
           id="name"
           name="name"
           type="text"
@@ -82,7 +82,7 @@ export function ContactForm() {
           Email
         </label>
         <input
-          className="mt-2 block w-full rounded-md border-transparent bg-stone-100 text-stone-700 placeholder:text-stone-400 focus:border-stone-400 focus:bg-white focus:ring-0 dark:bg-stone-700 dark:text-stone-300 dark:placeholder:text-stone-500 dark:focus:border-stone-600 dark:focus:bg-stone-600"
+          className="mt-2 block w-full rounded-md border-transparent bg-stone-100 p-2 text-stone-700 placeholder:text-stone-400 focus:border-stone-400 focus:bg-white focus:ring-0 dark:bg-stone-700 dark:text-stone-300 dark:placeholder:text-stone-500 dark:focus:border-stone-600 dark:focus:bg-stone-600"
           id="email"
           name="email"
           type="email"
@@ -103,7 +103,7 @@ export function ContactForm() {
           Message
         </label>
         <textarea
-          className="mt-2 block w-full rounded-md border-transparent bg-stone-100 text-stone-700 placeholder:text-stone-400 focus:border-stone-400 focus:bg-white focus:ring-0 dark:bg-stone-700 dark:text-stone-300 dark:placeholder:text-stone-500 dark:focus:border-stone-600 dark:focus:bg-stone-600"
+          className="mt-2 block w-full rounded-md border-transparent bg-stone-100 p-2 text-stone-700 placeholder:text-stone-400 focus:border-stone-400 focus:bg-white focus:ring-0 dark:bg-stone-700 dark:text-stone-300 dark:placeholder:text-stone-500 dark:focus:border-stone-600 dark:focus:bg-stone-600"
           id="message"
           name="message"
           required={true}
@@ -131,12 +131,9 @@ export function ContactForm() {
         theme={isDarkMode ? 'dark' : 'light'}
       />
 
-      <Button
-        className="mt-6"
-        type="submit"
-        label={loading ? 'Sending...' : 'Send'}
-        disabled={loading}
-      />
+      <Button className="mt-6" type="submit" disabled={loading}>
+        {loading ? 'Sending...' : 'Send'}
+      </Button>
     </form>
   )
 }
