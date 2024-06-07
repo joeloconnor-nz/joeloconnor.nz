@@ -1,25 +1,24 @@
-const darkMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+const darkMediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
 
 function updateDarkMode() {
-    const prefersDarkMode = darkMediaQuery.matches;
-    const storedDarkMode = localStorage.getItem('isDarkMode');
+  const prefersDarkMode = darkMediaQuery.matches
+  const storedDarkMode = localStorage.getItem('isDarkMode')
 
-    const isDarkMode =
-        storedDarkMode === 'true' ||
-        (prefersDarkMode && storedDarkMode === null);
+  const isDarkMode =
+    storedDarkMode === 'true' || (prefersDarkMode && storedDarkMode === null)
 
-    if (isDarkMode) {
-        document.documentElement.classList.add('dark');
-    } else {
-        document.documentElement.classList.remove('dark');
-    }
+  if (isDarkMode) {
+    document.documentElement.classList.add('dark')
+  } else {
+    document.documentElement.classList.remove('dark')
+  }
 
-    if (isDarkMode === prefersDarkMode) {
-        localStorage.removeItem('isDarkMode');
-    }
+  if (isDarkMode === prefersDarkMode) {
+    localStorage.removeItem('isDarkMode')
+  }
 }
 
-updateDarkMode();
+updateDarkMode()
 
-darkMediaQuery.addEventListener('change', updateDarkMode);
-window.addEventListener('storage', updateDarkMode);
+darkMediaQuery.addEventListener('change', updateDarkMode)
+window.addEventListener('storage', updateDarkMode)
