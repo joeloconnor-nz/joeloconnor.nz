@@ -5,7 +5,7 @@ export function GitHubLogo() {
             viewBox="0 0 98 96"
             fill="currentColor"
             aria-labelledby="gitHubLogoTitle"
-            className="h-7 w-7 md:h-9 md:w-9"
+            className="size-7 md:size-9"
         >
             <title id="gitHubLogoTitle">GitHub Logo</title>
             <path

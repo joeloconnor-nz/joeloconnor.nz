@@ -23,9 +23,9 @@ export function DarkModeToggle() {
             onClick={toggleDarkMode}
         >
             {isDarkMode ? (
-                <SunIcon className="h-6 w-6" />
+                <SunIcon className="size-6" />
             ) : (
-                <MoonIcon className="h-6 w-6" />
+                <MoonIcon className="size-6" />
             )}
         </button>
     );

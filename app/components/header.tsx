@@ -7,7 +7,7 @@ export function Header() {
         <header className="flex flex-row items-center justify-between p-6">
             <Link
                 href="/"
-                className="text-xl font-light text-purple-500 transition-colors hover:text-stone-700 dark:text-purple-600 hover:dark:text-stone-300 sm:text-2xl md:text-3xl"
+                className="text-xl tracking-tight font-light text-purple-500 transition-colors dark:text-purple-600 hover:dark:text-stone-300 sm:text-2xl md:text-3xl"
             >
                 joeloconnor.nz
             </Link>

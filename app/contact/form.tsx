@@ -70,7 +70,6 @@ export function ContactForm() {
                     autoComplete="name"
                     required={true}
                     maxLength={100}
-                    placeholder="John Doe"
                     disabled={loading}
                     value={name}
                     onChange={(event) => {
@@ -94,7 +93,7 @@ export function ContactForm() {
                     type="email"
                     autoComplete="email"
                     required={true}
-                    placeholder="john@example.nz"
+                    placeholder="email@example.nz"
                     disabled={loading}
                     value={email}
                     onChange={(event) => {
