@@ -1,6 +1,6 @@
 export async function validateCloudflareTurnstileToken(
-  request: Request,
   captchaToken: string,
+  remoteIP: string | null,
 ): Promise<boolean> {
   const secretKey = process.env.CLOUDFLARE_TURNSTILE_SECRET_KEY
   if (!secretKey) {
@@ -10,7 +10,10 @@ export async function validateCloudflareTurnstileToken(
   const formData = new URLSearchParams()
   formData.append('secret', secretKey)
   formData.append('response', captchaToken)
-  formData.append('remoteip', request.headers.get('x-forwarded-for') as string)
+
+  if (remoteIP !== null) {
+    formData.append('remoteip', remoteIP)
+  }
 
   const url = 'https://challenges.cloudflare.com/turnstile/v0/siteverify'
   const result = await fetch(url, {

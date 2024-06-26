@@ -1,8 +1,8 @@
-import { ContactFormData } from '@/contact/form-data'
+import { FormSchema } from './form-schema'
 
 // Due to a known limitation, we can't use renderToString.
 // Remove this file and use /email.tsx when this issue has been resolved https://github.com/vercel/next.js/issues/43810
-export function getContactEmailString(data: ContactFormData): string {
+export function getContactEmailString(data: FormSchema): string {
   return `
 <div>
     <p style="font-family: sans-serif; font-size: 14px; white-space: pre-wrap; marginBottom: 32px;">${data.message}</p>

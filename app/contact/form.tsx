@@ -1,20 +1,28 @@
 'use client'
 
-import { FormEventHandler, useState } from 'react'
+import { zodResolver } from '@hookform/resolvers/zod'
 import { useRouter } from 'next/navigation'
+import { useForm } from 'react-hook-form'
 import Turnstile from 'react-turnstile'
 
-import { ContactFormData } from '@/contact/form-data'
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from '@/components/ui/form'
+import { Input } from '@/components/ui/input'
+import { Textarea } from '@/components/ui/textarea'
 import { useDarkMode } from '@/hooks/use-dark-mode'
 import { Button } from '../components/ui/button'
+import { contactFormAction } from './action'
+import { FormSchema, formSchema } from './form-schema'
 
 export function ContactForm() {
   const router = useRouter()
-  const [loading, setLoading] = useState(false)
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [message, setMessage] = useState('')
-  const [captchaToken, setCaptchaToken] = useState('')
   const { isDarkMode } = useDarkMode()
 
   const turnstileSiteKey = process.env.NEXT_PUBLIC_CLOUDFLARE_TURNSTILE_SITE_KEY
@@ -23,117 +31,107 @@ export function ContactForm() {
     throw new Error('Cloudflare Turnstile site key not defined.')
   }
 
-  const handleSubmit: FormEventHandler<HTMLFormElement> = async (event) => {
-    event.preventDefault()
+  // 1. Define your form.
+  const form = useForm<FormSchema>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      name: '',
+      email: '',
+      message: '',
+      captchaToken: undefined,
+    },
+  })
 
-    const formData: ContactFormData = {
-      name,
-      email,
-      message,
-      captchaToken,
-    }
+  const isLoading = form.formState.isSubmitting
 
-    if (formData.captchaToken === '') {
-      alert('Please complete the captcha verification')
-      return
-    }
-
-    setLoading(true)
-
-    const response = await fetch('/contact/api', {
-      method: 'POST',
-      body: JSON.stringify(formData),
-    })
-
-    if (response.ok) {
-      router.replace('/contact/sent')
-    } else {
-      setLoading(false)
-      const body = await response.json()
-      alert(`Failed to send email. ${body.message}`)
-    }
+  // 2. Define a submit handler.
+  async function onSubmit(values: FormSchema) {
+    await contactFormAction(values)
   }
 
   return (
-    <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
-      <div>
-        <label className="text-stone-600 dark:text-stone-400" htmlFor="name">
-          Name
-        </label>
-        <input
-          className="mt-2 block w-full rounded-md border-transparent bg-stone-100 p-2 text-stone-700 placeholder:text-stone-400 focus:border-stone-400 focus:bg-white focus:ring-0 dark:bg-stone-700 dark:text-stone-300 dark:placeholder:text-stone-500 dark:focus:border-stone-600 dark:focus:bg-stone-600"
-          id="name"
+    <Form {...form}>
+      <form
+        className="flex flex-col gap-6"
+        onSubmit={form.handleSubmit(onSubmit)}
+      >
+        <FormField
+          control={form.control}
           name="name"
-          type="text"
-          autoComplete="name"
-          required={true}
-          maxLength={100}
-          disabled={loading}
-          value={name}
-          onChange={(event) => {
-            const newValue = event.target.value
-            setName(newValue)
-          }}
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Name</FormLabel>
+              <FormControl>
+                <Input {...field} type="text" autoComplete="name" />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
         />
-      </div>
 
-      <div>
-        <label className="text-stone-600 dark:text-stone-400" htmlFor="email">
-          Email
-        </label>
-        <input
-          className="mt-2 block w-full rounded-md border-transparent bg-stone-100 p-2 text-stone-700 placeholder:text-stone-400 focus:border-stone-400 focus:bg-white focus:ring-0 dark:bg-stone-700 dark:text-stone-300 dark:placeholder:text-stone-500 dark:focus:border-stone-600 dark:focus:bg-stone-600"
-          id="email"
+        <FormField
+          control={form.control}
           name="email"
-          type="email"
-          autoComplete="email"
-          required={true}
-          placeholder="email@example.nz"
-          disabled={loading}
-          value={email}
-          onChange={(event) => {
-            const newValue = event.target.value
-            setEmail(newValue)
-          }}
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Email</FormLabel>
+              <FormControl>
+                <Input
+                  {...field}
+                  type="email"
+                  autoComplete="email"
+                  placeholder="email@example.com"
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
         />
-      </div>
 
-      <div>
-        <label className="text-stone-600 dark:text-stone-400" htmlFor="message">
-          Message
-        </label>
-        <textarea
-          className="mt-2 block w-full rounded-md border-transparent bg-stone-100 p-2 text-stone-700 placeholder:text-stone-400 focus:border-stone-400 focus:bg-white focus:ring-0 dark:bg-stone-700 dark:text-stone-300 dark:placeholder:text-stone-500 dark:focus:border-stone-600 dark:focus:bg-stone-600"
-          id="message"
+        <FormField
+          control={form.control}
           name="message"
-          required={true}
-          minLength={10}
-          maxLength={2000}
-          placeholder="Type your message here..."
-          rows={4}
-          disabled={loading}
-          value={message}
-          onChange={(event) => {
-            const newValue = event.target.value
-            setMessage(newValue)
-          }}
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Message</FormLabel>
+              <FormControl>
+                <Textarea
+                  {...field}
+                  placeholder="Type your message here"
+                  rows={4}
+                />
+              </FormControl>
+              <FormDescription className="text-right">
+                {field.value.length}/2000
+              </FormDescription>
+              <FormMessage />
+            </FormItem>
+          )}
         />
-        <p className="mt-1 text-right text-stone-400 dark:text-stone-600">
-          {message.length}/2000
-        </p>
-      </div>
 
-      <Turnstile
-        className="h-[65px] w-[300px]"
-        sitekey={turnstileSiteKey}
-        onVerify={setCaptchaToken}
-        refreshExpired="auto"
-        theme={isDarkMode ? 'dark' : 'light'}
-      />
+        <FormField
+          control={form.control}
+          name="captchaToken"
+          render={({ field }) => (
+            <FormItem>
+              <FormControl>
+                <Turnstile
+                  className="h-[65px] w-[300px]"
+                  sitekey={turnstileSiteKey}
+                  onVerify={(token) => field.onChange(token)}
+                  refreshExpired="auto"
+                  theme={isDarkMode ? 'dark' : 'light'}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
 
-      <Button className="mt-6" type="submit" disabled={loading}>
-        {loading ? 'Sending...' : 'Send'}
-      </Button>
-    </form>
+        <Button className="w-full" type="submit" disabled={isLoading}>
+          {isLoading ? 'Sending...' : 'Send'}
+        </Button>
+      </form>
+    </Form>
   )
 }

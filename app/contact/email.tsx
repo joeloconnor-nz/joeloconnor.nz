@@ -1,9 +1,9 @@
 import { renderToString } from 'react-dom/server'
 
-import { ContactFormData } from '@/contact/form-data'
+import { FormSchema } from './form-schema'
 
 export interface ContactEmailProps {
-  data: ContactFormData
+  data: FormSchema
 }
 
 export function ContactEmail(props: ContactEmailProps) {
@@ -62,6 +62,6 @@ export function ContactEmail(props: ContactEmailProps) {
   )
 }
 
-export function getContactEmailString(data: ContactFormData): string {
+export function getContactEmailString(data: FormSchema): string {
   return renderToString(<ContactEmail data={data} />)
 }
