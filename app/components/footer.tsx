@@ -23,7 +23,7 @@ export function Footer() {
             target="_blank"
             rel="noopener noreferrer"
             title="Visit my LinkedIn profile"
-            className="transition-colors hover:text-[#0077B5]"
+            className="transition-colors hover:text-[#0A66C2]"
           >
             <LinkedInLogo />
           </a>
