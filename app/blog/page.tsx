@@ -45,7 +45,7 @@ function BlogPost(props: BlogPostProps) {
   const post = props.post
 
   return (
-    <li className="group border-t-4 border-t-purple-700 bg-white p-6 text-stone-800 shadow transition-colors hover:border-t-purple-800 hover:bg-stone-100 dark:border-t-purple-800/50 dark:bg-stone-900 dark:text-stone-300 hover:dark:bg-stone-700/50">
+    <li className="group border-t-4 border-t-purple-700 bg-white p-6 text-stone-800 shadow transition-colors hover:border-t-purple-800 hover:bg-stone-100 dark:border-t-purple-900 dark:bg-stone-900 dark:text-stone-300 hover:dark:bg-stone-700/50">
       <Link className="flex h-full flex-col gap-2" href={post.url}>
         <h2 className="text-xl font-medium">{post.title}</h2>
         <time
@@ -56,7 +56,7 @@ function BlogPost(props: BlogPostProps) {
         </time>
         <p className="mb-4 grow dark:text-stone-300">{post.description}</p>
         <div
-          className="text-end font-medium text-stone-400 transition-colors group-hover:text-purple-600 dark:text-stone-500 group-hover:dark:text-purple-700/80"
+          className="text-end font-medium text-stone-400 transition-colors group-hover:text-stone-800 dark:text-stone-500 dark:group-hover:text-stone-100"
           aria-hidden={true}
         >
           Read Article

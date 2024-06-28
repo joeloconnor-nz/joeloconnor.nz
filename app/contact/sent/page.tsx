@@ -1,3 +1,4 @@
+import { HomeIcon } from 'lucide-react'
 import { Metadata } from 'next'
 import Link from 'next/link'
 
@@ -22,8 +23,13 @@ export default function ContactSent() {
         </div>
       </div>
 
-      <Button variant="secondary" asChild>
-        <Link href="/">Return to home</Link>
+      <Button variant="default" asChild>
+        <Link href="/">
+          <>
+            <HomeIcon className="mr-2 size-4" />
+            Return to home
+          </>
+        </Link>
       </Button>
     </div>
   )

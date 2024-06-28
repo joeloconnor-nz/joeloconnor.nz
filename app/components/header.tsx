@@ -12,8 +12,7 @@ export function Header() {
       >
         joeloconnor.nz
       </Link>
-
-      <div className="flex flex-row items-center gap-2">
+      <div className="flex gap-4">
         <HeaderNav />
         <DarkModeToggle />
       </div>

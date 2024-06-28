@@ -37,7 +37,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
 
   return (
     <div className="md:my-12 md:px-6">
-      <div className="w-full border-t-4 border-t-purple-700 bg-white px-6 pb-16 pt-12 shadow-xl shadow-stone-700/10 ring-1 ring-stone-900/5 dark:bg-stone-800 dark:shadow-stone-800/10 md:px-12 md:pt-16 lg:pb-28 lg:pt-24">
+      <div className="w-full border-t-4 border-t-purple-700 bg-white px-6 pb-16 pt-12 shadow-xl shadow-stone-700/10 ring-1 ring-stone-900/5 dark:border-t-purple-900 dark:bg-stone-800 dark:shadow-stone-800/10 md:px-12 md:pt-16 lg:pb-28 lg:pt-24">
         <article className="mx-auto max-w-3xl">
           <header className="mb-8 flex flex-col">
             <Title>{post.title}</Title>

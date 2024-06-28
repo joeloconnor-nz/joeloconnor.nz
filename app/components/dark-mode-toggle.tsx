@@ -1,33 +1,27 @@
 'use client'
 
-import { MoonIcon, SunIcon } from '@heroicons/react/24/solid'
+import { MoonIcon, SunIcon, SunMoonIcon } from 'lucide-react'
 
 import { useDarkMode } from '@/hooks/use-dark-mode'
-import { CircleIcon } from './icons/circle-icon'
 
 export function DarkModeToggle() {
   const { isDarkMode, toggleDarkMode } = useDarkMode()
-
   if (isDarkMode === undefined) {
     return (
-      <div className="p-2 text-stone-700 dark:text-stone-300">
-        <CircleIcon />
+      <div className="text-stone-700 dark:text-stone-300">
+        <SunMoonIcon />
       </div>
     )
   }
 
   return (
     <button
-      className="p-2 text-stone-700 transition-colors hover:text-purple-500 dark:text-stone-300 dark:hover:text-purple-500"
-      aria-label="Dark Mode"
+      className="text-stone-700 transition-colors hover:text-purple-500 dark:text-stone-300 dark:hover:text-purple-500"
+      aria-label="Theme Toggle"
       aria-pressed={isDarkMode}
       onClick={toggleDarkMode}
     >
-      {isDarkMode ? (
-        <SunIcon className="size-6" />
-      ) : (
-        <MoonIcon className="size-6" />
-      )}
+      {isDarkMode ? <SunIcon /> : <MoonIcon />}
     </button>
   )
 }

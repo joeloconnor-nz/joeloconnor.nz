@@ -1,6 +1,7 @@
 'use client'
 
 import { zodResolver } from '@hookform/resolvers/zod'
+import { LoaderCircleIcon } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import { useForm } from 'react-hook-form'
 import Turnstile from 'react-turnstile'
@@ -62,7 +63,12 @@ export function ContactForm() {
             <FormItem>
               <FormLabel>Name</FormLabel>
               <FormControl>
-                <Input {...field} type="text" autoComplete="name" />
+                <Input
+                  {...field}
+                  disabled={isLoading}
+                  type="text"
+                  autoComplete="name"
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -81,6 +87,7 @@ export function ContactForm() {
                   type="email"
                   autoComplete="email"
                   placeholder="email@example.com"
+                  disabled={isLoading}
                 />
               </FormControl>
               <FormMessage />
@@ -99,9 +106,12 @@ export function ContactForm() {
                   {...field}
                   placeholder="Type your message here"
                   rows={4}
+                  disabled={isLoading}
                 />
               </FormControl>
-              <FormDescription className="text-right">
+              <FormDescription
+                className={`text-right ${field.value.length >= 1 && field.value.length < 10 ? 'text-destructive' : field.value.length === 0 ? 'text-transparent' : ''}`}
+              >
                 {field.value.length}/2000
               </FormDescription>
               <FormMessage />
@@ -129,7 +139,14 @@ export function ContactForm() {
         />
 
         <Button className="w-full" type="submit" disabled={isLoading}>
-          {isLoading ? 'Sending...' : 'Send'}
+          {isLoading ? (
+            <>
+              <LoaderCircleIcon className="mr-2 size-4 animate-spin" />
+              Sending...
+            </>
+          ) : (
+            'Send'
+          )}
         </Button>
       </form>
     </Form>
