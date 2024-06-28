@@ -12,44 +12,44 @@ My blog is authored using MDX and [Contentlayer](https://www.contentlayer.dev). 
 
 You can visit my site at the following URLs:
 
--   https://joeloconnor.nz - the live site
--   https://dev.joeloconnor.nz - the current development site
+- https://joeloconnor.nz - the live site
+- https://dev.joeloconnor.nz - the current development site
 
 ## Planned Features/Tasks
 
--   Home page
-    -   [x] Social media links
-    -   [ ] Work experience
-    -   [ ] CV download link
-    -   [ ] Blog articles
--   Blog
-    -   [x] Index page
-    -   [x] Post page
-    -   [ ] Categories
-    -   [ ] Social sharing images
-    -   [ ] Styled code blocks
-    -   [ ] RSS feed
--   Header
-    -   [ ] Blog link
-    -   [ ] Mobile-friendly menu
-    -   [x] Dark mode toggle
-    -   [x] Logo
--   Footer
-    -   [ ] Site links
-    -   [ ] Remove social media links
--   Contact form
-    -   [x] Captcha
-    -   [x] Input validation
-    -   [ ] Faster email service
--   About page
-    -   [ ] Social media links
-    -   [ ] NZ map with POIs
--   #### Bug fixes
-    -   [x] Captcha theme doesn't update when dark mode toggle is pressed
-    -   [ ] Can't toggle to dark mode when multiple tabs are open in Safari
--   #### Improvements
-    -   [ ] Update styles
-    -   [ ] Logo to use primary colour on homepage. Currently the other way around
+- Home page
+  - [x] Social media links
+  - [ ] Work experience
+  - [ ] CV download link
+  - [ ] Blog articles
+- Blog
+  - [x] Index page
+  - [x] Post page
+  - [ ] Categories
+  - [ ] Social sharing images
+  - [ ] Styled code blocks
+  - [ ] RSS feed
+- Header
+  - [ ] Blog link
+  - [ ] Mobile-friendly menu
+  - [x] Dark mode toggle
+  - [x] Logo
+- Footer
+  - [ ] Site links
+  - [ ] Remove social media links
+- Contact form
+  - [x] Captcha
+  - [x] Input validation
+  - [ ] Faster email service
+- About page
+  - [ ] Social media links
+  - [ ] NZ map with POIs
+- #### Bug fixes
+  - [x] Captcha theme doesn't update when dark mode toggle is pressed
+  - [ ] Can't toggle to dark mode when multiple tabs are open in Safari
+- #### Improvements
+  - [ ] Update styles
+  - [ ] Logo to use primary colour on homepage. Currently the other way around
 
 ## Getting Started
 
@@ -83,7 +83,7 @@ Finally, open [http://localhost:3000](http://localhost:3000) in your browser to 
 
 To learn more about the technologies used in this site, see the following resources:
 
--   [Next.js](https://nextjs.org/docs) - the official Next.js documentation
--   [Tailwind CSS](https://tailwindcss.com/docs) - the official Tailwind CSS documentation
--   [Contentlayer](https://www.contentlayer.dev/docs) - the official Contentlayer documentation
--   [MDX](https://mdxjs.com/docs) - the official MDX documentation
+- [Next.js](https://nextjs.org/docs) - the official Next.js documentation
+- [Tailwind CSS](https://tailwindcss.com/docs) - the official Tailwind CSS documentation
+- [Contentlayer](https://www.contentlayer.dev/docs) - the official Contentlayer documentation
+- [MDX](https://mdxjs.com/docs) - the official MDX documentation
