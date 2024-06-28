@@ -1,7 +1,5 @@
 import Image from 'next/image'
 
-import { Button } from '@/components/button'
-
 export default function Home() {
   return (
     <div className="flex grow flex-col items-center justify-center gap-10 px-6 py-8 text-center">
