@@ -109,10 +109,8 @@ export function ContactForm() {
                   disabled={isLoading}
                 />
               </FormControl>
-              <FormDescription
-                className={`text-right ${field.value.length >= 1 && field.value.length < 10 ? 'text-destructive' : field.value.length === 0 ? 'text-transparent' : ''}`}
-              >
-                {field.value.length}/2000
+              <FormDescription className="text-right">
+                {field.value.length} / 2000
               </FormDescription>
               <FormMessage />
             </FormItem>
