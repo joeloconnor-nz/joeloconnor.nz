@@ -100,7 +100,13 @@ export function ContactForm() {
           name="message"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Message</FormLabel>
+              <div className="flex items-center justify-between">
+                <FormLabel>Message</FormLabel>
+                <FormDescription className="text-right">
+                  {field.value.length} / 2000
+                </FormDescription>
+              </div>
+
               <FormControl>
                 <Textarea
                   {...field}
@@ -109,9 +115,7 @@ export function ContactForm() {
                   disabled={isLoading}
                 />
               </FormControl>
-              <FormDescription className="text-right">
-                {field.value.length} / 2000
-              </FormDescription>
+
               <FormMessage />
             </FormItem>
           )}
