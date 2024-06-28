@@ -1,6 +1,5 @@
 import { GitHubLogo } from './icons/github-logo'
 import { LinkedInLogo } from './icons/linkedin-logo'
-import { TelegramLogo } from './icons/telegram-logo'
 
 export function Footer() {
   return (
@@ -26,17 +25,6 @@ export function Footer() {
             className="transition-colors hover:text-[#0A66C2]"
           >
             <LinkedInLogo />
-          </a>
-        </li>
-        <li>
-          <a
-            href="https://t.me/nztek"
-            target="_blank"
-            rel="noopener noreferrer"
-            title="Message me on Telegram"
-            className="transition-colors hover:text-[#229ED9]"
-          >
-            <TelegramLogo />
           </a>
         </li>
       </ul>
