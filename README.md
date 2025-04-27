@@ -1,12 +1,10 @@
 # joeloconnor.nz
 
-Welcome to the personal website and blog of Joel O'Connor. This is a [Next.js](https://nextjs.org/) using the `app` directory for pages, layouts, and route handlers.
+Welcome to the personal website of Joel O'Connor. This is a [Next.js](https://nextjs.org/) using the `app` directory for pages, layouts, and route handlers.
 
 This site uses [Tailwind CSS](https://tailwindcss.com) along with the [@tailwindcss/typography](https://tailwindcss.com/docs/typography-plugin) plugin for styling.
 
 I'm currently using [nodemailer](https://nodemailer.com) to send contact emails, but may look to replace this with a more robust solution in the near future.
-
-My blog is authored using MDX and [Contentlayer2](https://github.com/timlrx/contentlayer2). I'll attempt to regularly post articles about my hobbies, projects, and learning.
 
 ## URLs
 
@@ -18,20 +16,12 @@ You can visit my site at the following URLs:
 ## Planned Features/Tasks
 
 - Home page
+
   - [x] Social media links
   - [ ] Work experience
   - [ ] CV download link
-  - [x] Blog articles
-- Blog
-  - [x] Index page
-  - [x] Post page
-  - [ ] Categories
-  - [ ] Social sharing images
-  - [ ] Styled code blocks
-  - [ ] RSS feed
-  - [ ] Breadcrump navigation
+
 - Header
-  - [x] Blog link
   - [x] Mobile-friendly menu
   - [x] Dark mode toggle
   - [x] Logo
@@ -85,5 +75,3 @@ To learn more about the technologies used in this site, see the following resour
 
 - [Next.js](https://nextjs.org/docs) - the official Next.js documentation
 - [Tailwind CSS](https://tailwindcss.com/docs) - the official Tailwind CSS documentation
-- [Contentlayer2](https://github.com/timlrx/contentlayer2) - the fork of Contentlayer
-- [MDX](https://mdxjs.com/docs) - the official MDX documentation
