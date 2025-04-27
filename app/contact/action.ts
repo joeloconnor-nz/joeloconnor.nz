@@ -20,7 +20,7 @@ export async function contactFormAction(request: any) {
   const { name, email, message, captchaToken } = result.data
 
   // Validate captchaToken against Cloudflare API
-  const headersList = headers()
+  const headersList = await headers()
   const remoteIP = headersList.get('x-forwarded-for')
 
   const isCaptchaValid = await validateCloudflareTurnstileToken(
