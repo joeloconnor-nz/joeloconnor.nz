@@ -4,8 +4,7 @@ import Link from 'next/link'
 export function HeaderNav() {
   return (
     <nav>
-      <ul className="flex gap-4">
-        <HeaderNavLink href="/blog">Blog</HeaderNavLink>
+      <ul>
         <HeaderNavLink href="/contact">Contact</HeaderNavLink>
       </ul>
     </nav>
