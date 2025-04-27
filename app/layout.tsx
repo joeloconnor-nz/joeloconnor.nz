@@ -33,7 +33,7 @@ export default function RootLayout({
       <body className="bg-stone-50 transition-colors duration-200 dark:bg-stone-950">
         {/* eslint-disable-next-line @next/next/no-sync-scripts */}
         <script src="/scripts/dark-mode.js" />
-        <div className="mx-auto flex min-h-[100dvh] max-w-screen-xl flex-col rounded-lg">
+        <div className="mx-auto flex min-h-[100dvh] max-w-(--breakpoint-xl) flex-col rounded-lg">
           <Header />
           <main className="flex grow flex-col">{children}</main>
           <Footer />
