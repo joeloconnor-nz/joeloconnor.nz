@@ -15,7 +15,7 @@ export default function Home() {
         <span className="text-purple-500 dark:text-purple-600">Hey!</span>
         <span>&nbsp;I&apos;m Joel</span>
         <span role="img" aria-label="wave">
-          👋
+          &nbsp;👋
         </span>
       </h1>
       <div className="flex flex-col gap-2">
