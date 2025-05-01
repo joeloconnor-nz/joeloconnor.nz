@@ -11,7 +11,7 @@ export function Footer() {
             target="_blank"
             rel="noopener noreferrer"
             title="Visit my GitHub profile"
-            className="transition-colors hover:text-stone-500"
+            className="transition-colors hover:text-black dark:hover:text-white"
           >
             <GitHubLogo />
           </a>
