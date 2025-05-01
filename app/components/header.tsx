@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation'
 import { twMerge } from 'tailwind-merge'
 
 import { HeaderNav } from './header-nav'
+import { ProfileImage } from './motion/profile-image'
 import { ThemeModeToggle } from './theme-mode-toggle'
 
 export function Header() {
@@ -17,14 +18,7 @@ export function Header() {
         pathname === '/' ? 'justify-end' : 'justify-between',
       )}
     >
-      {pathname !== '/' && (
-        <Link
-          href="/"
-          className="text-xl font-light tracking-tight text-purple-500 transition-colors sm:text-2xl md:text-3xl dark:text-purple-600 dark:hover:text-stone-300"
-        >
-          joeloconnor.nz
-        </Link>
-      )}
+      {pathname !== '/' && <ProfileImage isHeader />}
       <div className="flex items-center gap-4">
         <HeaderNav />
         <ThemeModeToggle />
