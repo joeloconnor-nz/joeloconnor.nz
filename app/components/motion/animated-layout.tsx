@@ -1,7 +1,7 @@
 'use client'
 
 import { ReactNode } from 'react'
-import { motion } from 'framer-motion'
+import { motion } from 'motion/react'
 import { usePathname } from 'next/navigation'
 import { twMerge } from 'tailwind-merge'
 

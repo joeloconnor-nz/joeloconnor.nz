@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
-import { motion } from 'framer-motion'
+import { motion } from 'motion/react'
 
 const useTypingAnimation = (text: string, speed = 50) => {
   const [isTyping, setIsTyping] = useState(false)
