@@ -1,5 +1,7 @@
 import Image from 'next/image'
 
+import { AnimatedHeading } from './components/motion/animated-heading'
+
 export default function Home() {
   return (
     <div className="flex grow flex-col items-center justify-center gap-10 px-6 py-8 text-center">
@@ -11,13 +13,7 @@ export default function Home() {
         alt="Image of Joel O'Connor"
         priority
       />
-      <h1 className="flex gap-2 font-sans text-5xl font-semibold">
-        <span className="text-purple-500 dark:text-purple-600">Hey!</span>
-        <span>&nbsp;I&apos;m Joel</span>
-        <span role="img" aria-label="wave">
-          &nbsp;👋
-        </span>
-      </h1>
+      <AnimatedHeading />
       <div className="flex flex-col gap-2">
         <p className="text-slate-600 md:text-xl dark:text-stone-400">
           I&apos;m learning software development—follow my journey
