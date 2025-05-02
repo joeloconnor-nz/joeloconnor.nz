@@ -1,5 +1,7 @@
+import { BlueskyLogo } from './icons/bluesky-logo'
 import { GitHubLogo } from './icons/github-logo'
 import { LinkedInLogo } from './icons/linkedin-logo'
+import { TwitterLogo } from './icons/twitter-logo'
 
 export function Footer() {
   return (
@@ -25,6 +27,28 @@ export function Footer() {
             className="transition-colors hover:text-[#0A66C2]"
           >
             <LinkedInLogo />
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://bsky.app/profile/joeloconnor.nz"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="Visit my Bluesky profile"
+            className="transition-colors hover:text-[#1185FE]"
+          >
+            <BlueskyLogo />
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://x.com/joeloconnor_nz"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="Visit my Twitter profile"
+            className="transition-colors hover:text-[#55acee]"
+          >
+            <TwitterLogo />
           </a>
         </li>
       </ul>
