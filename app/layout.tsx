@@ -6,6 +6,8 @@ import { Header } from '@/components/header'
 
 import './globals.css'
 
+import { ThemeProvider } from 'next-themes'
+
 export const metadata: Metadata = {
   title: {
     default: "Joel O'Connor",
@@ -31,14 +33,19 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className="bg-stone-50 transition-colors duration-200 dark:bg-stone-950">
-        {/* eslint-disable-next-line @next/next/no-sync-scripts */}
-        <script src="/scripts/dark-mode.js" />
-        <div className="mx-auto flex min-h-[100dvh] max-w-(--breakpoint-xl) flex-col rounded-lg">
-          <Header />
-          <main className="flex grow flex-col">{children}</main>
-          <Footer />
-        </div>
-        <Analytics />
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <div className="max-w-(--breakpoint-xl) mx-auto flex min-h-[100dvh] flex-col rounded-lg">
+            <Header />
+            <main className="flex grow flex-col">{children}</main>
+            <Footer />
+          </div>
+          <Analytics />
+        </ThemeProvider>
       </body>
     </html>
   )

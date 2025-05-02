@@ -1,20 +1,27 @@
-import Link from 'next/link'
+'use client'
 
-import { DarkModeToggle } from './dark-mode-toggle'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import { twMerge } from 'tailwind-merge'
+
 import { HeaderNav } from './header-nav'
+import { ProfileImage } from './motion/profile-image'
+import { ThemeModeToggle } from './theme-mode-toggle'
 
 export function Header() {
+  const pathname = usePathname()
+
   return (
-    <header className="flex flex-row items-center justify-between p-6">
-      <Link
-        href="/"
-        className="text-xl font-light tracking-tight text-purple-500 transition-colors dark:text-purple-600 dark:hover:text-stone-300 sm:text-2xl md:text-3xl"
-      >
-        joeloconnor.nz
-      </Link>
-      <div className="flex gap-4">
+    <header
+      className={twMerge(
+        'flex flex-row items-center p-6',
+        pathname === '/' ? 'justify-end' : 'justify-between',
+      )}
+    >
+      {pathname !== '/' && <ProfileImage isHeader />}
+      <div className="flex items-center gap-4">
         <HeaderNav />
-        <DarkModeToggle />
+        <ThemeModeToggle />
       </div>
     </header>
   )
