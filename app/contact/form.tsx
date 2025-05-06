@@ -141,7 +141,7 @@ export function ContactForm() {
         />
 
         <Button
-          className="w-full rounded-b-xl"
+          className="w-full rounded-b-xl transition-transform hover:scale-101"
           type="submit"
           disabled={isLoading}
         >
