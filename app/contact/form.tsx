@@ -2,6 +2,7 @@
 
 import { zodResolver } from '@hookform/resolvers/zod'
 import { LoaderCircleIcon } from 'lucide-react'
+import { useTheme } from 'next-themes'
 import { useRouter } from 'next/navigation'
 import { useForm } from 'react-hook-form'
 import Turnstile from 'react-turnstile'
@@ -17,14 +18,13 @@ import {
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
-import { useDarkMode } from '@/hooks/use-dark-mode'
 import { Button } from '../components/ui/button'
 import { contactFormAction } from './action'
 import { FormSchema, formSchema } from './form-schema'
 
 export function ContactForm() {
   const router = useRouter()
-  const { isDarkMode } = useDarkMode()
+  const { theme } = useTheme()
 
   const turnstileSiteKey = process.env.NEXT_PUBLIC_CLOUDFLARE_TURNSTILE_SITE_KEY
 
@@ -132,7 +132,7 @@ export function ContactForm() {
                   sitekey={turnstileSiteKey}
                   onVerify={(token) => field.onChange(token)}
                   refreshExpired="auto"
-                  theme={isDarkMode ? 'dark' : 'light'}
+                  theme={theme === 'dark' ? 'dark' : 'light'}
                 />
               </FormControl>
               <FormMessage />

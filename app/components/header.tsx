@@ -1,20 +1,20 @@
 import Link from 'next/link'
 
-import { DarkModeToggle } from './dark-mode-toggle'
 import { HeaderNav } from './header-nav'
+import { ThemeModeToggle } from './theme-mode-toggle'
 
 export function Header() {
   return (
     <header className="flex flex-row items-center justify-between p-6">
       <Link
         href="/"
-        className="text-xl font-light tracking-tight text-purple-500 transition-colors dark:text-purple-600 dark:hover:text-stone-300 sm:text-2xl md:text-3xl"
+        className="text-xl font-light tracking-tight text-purple-500 transition-colors sm:text-2xl md:text-3xl dark:text-purple-600 dark:hover:text-stone-300"
       >
         joeloconnor.nz
       </Link>
-      <div className="flex gap-4">
+      <div className="flex items-center gap-4">
         <HeaderNav />
-        <DarkModeToggle />
+        <ThemeModeToggle />
       </div>
     </header>
   )
