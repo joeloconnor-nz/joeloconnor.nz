@@ -140,7 +140,11 @@ export function ContactForm() {
           )}
         />
 
-        <Button className="w-full" type="submit" disabled={isLoading}>
+        <Button
+          className="w-full rounded-b-xl"
+          type="submit"
+          disabled={isLoading}
+        >
           {isLoading ? (
             <>
               <LoaderCircleIcon className="mr-2 size-4 animate-spin" />
