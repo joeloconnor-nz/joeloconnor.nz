@@ -6,8 +6,8 @@ import { TwitterLogo } from './icons/twitter-logo'
 export function Footer() {
   return (
     <footer className="flex flex-row justify-center px-6 py-8 text-stone-700 dark:text-stone-400">
-      <ul className="flex gap-4 md:gap-6">
-        <li>
+      <ul className="flex gap-4 sm:gap-6">
+        <li className="animate-[fade-in_0.5s_ease-out_0.1s_both]">
           <a
             href="https://github.com/joeloconnor-nz"
             target="_blank"
@@ -18,7 +18,7 @@ export function Footer() {
             <GitHubLogo />
           </a>
         </li>
-        <li>
+        <li className="animate-[fade-in_0.5s_ease-out_0.2s_both]">
           <a
             href="https://www.linkedin.com/in/joel-oconnor"
             target="_blank"
@@ -29,7 +29,7 @@ export function Footer() {
             <LinkedInLogo />
           </a>
         </li>
-        <li>
+        <li className="animate-[fade-in_0.5s_ease-out_0.3s_both]">
           <a
             href="https://bsky.app/profile/joeloconnor.nz"
             target="_blank"
@@ -40,7 +40,7 @@ export function Footer() {
             <BlueskyLogo />
           </a>
         </li>
-        <li>
+        <li className="animate-[fade-in_0.5s_ease-out_0.4s_both]">
           <a
             href="https://x.com/joeloconnor_nz"
             target="_blank"

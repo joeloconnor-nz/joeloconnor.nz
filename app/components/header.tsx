@@ -14,7 +14,7 @@ export function Header() {
   return (
     <header
       className={twMerge(
-        'flex h-30 flex-row items-center p-6',
+        'flex h-20 flex-row items-center p-6 sm:h-30',
         pathname === '/' ? 'justify-end' : 'justify-between',
       )}
     >

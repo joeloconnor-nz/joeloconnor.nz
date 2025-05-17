@@ -8,7 +8,7 @@ export default function Home() {
       <div className="flex flex-col items-center gap-10 px-6 py-8 text-center">
         <ProfileImage />
         <AnimatedHeading />
-        <div className="flex flex-col gap-2 text-slate-600 md:text-xl dark:text-stone-400">
+        <div className="flex flex-col gap-2 text-slate-600 sm:text-xl dark:text-stone-400">
           <p>
             I create AV & IT systems for large residential and marine projects,
           </p>

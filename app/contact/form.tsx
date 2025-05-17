@@ -6,6 +6,7 @@ import { useTheme } from 'next-themes'
 import { useRouter } from 'next/navigation'
 import { useForm } from 'react-hook-form'
 import Turnstile from 'react-turnstile'
+import { twMerge } from 'tailwind-merge'
 
 import {
   Form,
@@ -53,7 +54,7 @@ export function ContactForm() {
   return (
     <Form {...form}>
       <form
-        className="flex flex-col gap-6"
+        className="flex flex-col gap-3 sm:gap-6"
         onSubmit={form.handleSubmit(onSubmit)}
       >
         <FormField
@@ -86,7 +87,6 @@ export function ContactForm() {
                   {...field}
                   type="email"
                   autoComplete="email"
-                  placeholder="email@example.com"
                   disabled={isLoading}
                 />
               </FormControl>
@@ -102,8 +102,17 @@ export function ContactForm() {
             <FormItem>
               <div className="flex items-center justify-between">
                 <FormLabel>Message</FormLabel>
-                <FormDescription className="text-right">
-                  {field.value.length} / 2000
+                <FormDescription
+                  className={twMerge(
+                    'text-right',
+                    field.value.length > 0 &&
+                      field.value.length < 10 &&
+                      'text-red-500',
+                    field.value.length > 900 && 'text-orange-500',
+                    field.value.length > 950 && 'text-red-500',
+                  )}
+                >
+                  {field.value.length} / 1000
                 </FormDescription>
               </div>
 
@@ -125,7 +134,7 @@ export function ContactForm() {
           control={form.control}
           name="captchaToken"
           render={({ field }) => (
-            <FormItem>
+            <FormItem className="flex justify-center">
               <FormControl>
                 <Turnstile
                   className="h-[65px] w-[300px]"

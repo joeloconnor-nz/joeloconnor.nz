@@ -6,7 +6,7 @@ export function TwitterLogo() {
       xmlns="http://www.w3.org/2000/svg"
       preserveAspectRatio="xMidYMid"
       viewBox="0 0 1200 1227"
-      className="size-7 md:size-9"
+      className="size-7 sm:size-9"
       aria-labelledby="twitterLogoTitle"
       fill="currentColor"
     >
