@@ -26,7 +26,7 @@ export function ProfileImage({
 
   // Image sizes and styling based on position
   const imageStyles = isHeader
-    ? 'size-16 rounded-xl shadow-sm shadow-stone-900/60 transition-shadow duration-200 hover:shadow-sm sm:size-20 dark:shadow-stone-700/30'
+    ? 'size-12 rounded-xl shadow-sm shadow-stone-900/60 transition-shadow duration-200 hover:shadow-sm sm:size-20 dark:shadow-stone-700/30'
     : 'size-32 rounded-xl shadow-2xl shadow-stone-900/60 sm:size-40 dark:shadow-stone-700/30'
 
   // Create the image element with or without motion

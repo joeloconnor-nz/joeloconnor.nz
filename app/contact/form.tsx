@@ -54,7 +54,7 @@ export function ContactForm() {
   return (
     <Form {...form}>
       <form
-        className="flex flex-col gap-3 sm:gap-6"
+        className="flex flex-col gap-3 pb-8 sm:gap-6"
         onSubmit={form.handleSubmit(onSubmit)}
       >
         <FormField
@@ -134,10 +134,10 @@ export function ContactForm() {
           control={form.control}
           name="captchaToken"
           render={({ field }) => (
-            <FormItem className="flex justify-center">
+            <FormItem>
               <FormControl>
                 <Turnstile
-                  className="h-[65px] w-[300px]"
+                  className="mt-2 h-[65px] w-[300px]"
                   sitekey={turnstileSiteKey}
                   onVerify={(token) => field.onChange(token)}
                   refreshExpired="auto"
@@ -150,7 +150,7 @@ export function ContactForm() {
         />
 
         <Button
-          className="w-full rounded-b-xl transition-transform hover:scale-101"
+          className="mt-4 w-full transition-transform hover:scale-101"
           type="submit"
           disabled={isLoading}
         >
