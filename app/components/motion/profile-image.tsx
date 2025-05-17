@@ -27,7 +27,7 @@ export function ProfileImage({
   // Image sizes and styling based on position
   const imageStyles = isHeader
     ? 'size-16 rounded-xl shadow-sm shadow-stone-900/60 transition-shadow duration-200 hover:shadow-sm md:size-20 dark:shadow-stone-700/30'
-    : 'size-40 rounded-xl shadow-2xl shadow-stone-900/60 md:size-44 dark:shadow-stone-700/30'
+    : 'size-32 rounded-xl shadow-2xl shadow-stone-900/60 md:size-40 dark:shadow-stone-700/30'
 
   // Create the image element with or without motion
   const createImageElement = () => {
@@ -35,10 +35,11 @@ export function ProfileImage({
       <Image
         className={imageStyles}
         src="/images/profile-photo.jpg"
-        width={isHeader ? 80 : 176}
-        height={isHeader ? 80 : 176}
+        width={isHeader ? 80 : 160}
+        height={isHeader ? 80 : 160}
         alt="Image of Joel O'Connor"
         priority
+        sizes={isHeader ? '80px' : '(max-width: 768px) 128px, 160px'}
       />
     )
 
@@ -54,10 +55,10 @@ export function ProfileImage({
         className="overflow-hidden rounded-xl"
         transition={{
           type: 'spring',
-          stiffness: 250,
-          damping: 25,
-          mass: 0.8,
-          duration: 0.3, // Slightly faster animation
+          stiffness: 180,
+          damping: 15,
+          mass: 0.5,
+          duration: 0.2,
         }}
       >
         {imageComponent}

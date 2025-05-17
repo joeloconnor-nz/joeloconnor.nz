@@ -21,10 +21,12 @@ export function ThemeModeToggle() {
         <Button
           variant="ghost"
           size="icon"
-          className="data-[state=open]:bg-accent data-[state=open]:text-accent-foreground focus-visible:ring-0 focus-visible:ring-offset-0"
+          className="data-[state=open]:bg-accent data-[state=open]:text-accent-foreground relative focus-visible:ring-0 focus-visible:ring-offset-0"
         >
-          <SunIcon className="h-[1.2rem] w-[1.2rem] scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90" />
-          <MoonIcon className="absolute h-[1.2rem] w-[1.2rem] scale-0 rotate-90 transition-all dark:scale-100 dark:rotate-0" />
+          <div className="relative size-5">
+            <SunIcon className="absolute size-5 scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90" />
+            <MoonIcon className="absolute size-5 scale-0 rotate-90 transition-all dark:scale-100 dark:rotate-0" />
+          </div>
           <span className="sr-only">Toggle theme</span>
         </Button>
       </DropdownMenuTrigger>
