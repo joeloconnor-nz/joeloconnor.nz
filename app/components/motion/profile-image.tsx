@@ -10,6 +10,94 @@ interface ProfileImageProps {
   disableAnimation?: boolean
 }
 
+/**
+ * Animation configuration for the profile image
+ */
+const ANIMATION_CONFIG = {
+  type: 'spring',
+  stiffness: 180,
+  damping: 15,
+  mass: 0.5,
+  duration: 0.2,
+} as const
+
+/**
+ * Image dimensions based on position
+ */
+const IMAGE_DIMENSIONS = {
+  header: {
+    width: 80,
+    height: 80,
+    sizes: '80px',
+  },
+  default: {
+    width: 160,
+    height: 160,
+    sizes: '(max-width: 768px) 128px, 160px',
+  },
+} as const
+
+/**
+ * Returns the appropriate image styles based on whether the image is in the header
+ */
+function getImageStyles(isHeader: boolean): string {
+  if (isHeader) {
+    return 'size-12 rounded-xl shadow-sm shadow-stone-900/60 transition-shadow duration-200 hover:shadow-sm sm:size-20 dark:shadow-stone-700/30'
+  } else {
+    return 'size-32 rounded-xl shadow-2xl shadow-stone-900/60 sm:size-40 dark:shadow-stone-700/30'
+  }
+}
+
+/**
+ * Creates the base Image component with common props
+ */
+function createBaseImage(isHeader: boolean) {
+  let dimensions
+  if (isHeader) {
+    dimensions = IMAGE_DIMENSIONS.header
+  } else {
+    dimensions = IMAGE_DIMENSIONS.default
+  }
+
+  return (
+    <Image
+      className={getImageStyles(isHeader)}
+      src="/images/profile-photo.jpg"
+      width={dimensions.width}
+      height={dimensions.height}
+      alt="Image of Joel O'Connor"
+      priority
+      sizes={dimensions.sizes}
+    />
+  )
+}
+
+/**
+ * Wraps the image in a motion.div with animation properties
+ */
+function AnimatedImageWrapper({ children }: { children: React.ReactNode }) {
+  return (
+    <motion.div
+      layoutId="profile-image"
+      className="overflow-hidden rounded-xl"
+      transition={ANIMATION_CONFIG}
+    >
+      {children}
+    </motion.div>
+  )
+}
+
+/**
+ * Wraps the image in a standard div when animations are disabled
+ */
+function StaticImageWrapper({ children }: { children: React.ReactNode }) {
+  return <div className="overflow-hidden rounded-xl">{children}</div>
+}
+
+/**
+ * Profile image component that can be rendered in the header or as a standalone image.
+ * Supports animation and respects user's motion preferences.
+ */
 export function ProfileImage({
   isHeader = false,
   disableAnimation = false,
@@ -17,57 +105,19 @@ export function ProfileImage({
   const pathname = usePathname()
   const isHome = pathname === '/'
   const prefersReducedMotion = useReducedMotion()
-
-  // Determine if animation should be disabled
   const shouldDisableAnimation = disableAnimation || prefersReducedMotion
 
   // Don't render the image in the header if we're on the home page
   if (isHeader && isHome) return null
 
-  // Image sizes and styling based on position
-  const imageStyles = isHeader
-    ? 'size-12 rounded-xl shadow-sm shadow-stone-900/60 transition-shadow duration-200 hover:shadow-sm sm:size-20 dark:shadow-stone-700/30'
-    : 'size-32 rounded-xl shadow-2xl shadow-stone-900/60 sm:size-40 dark:shadow-stone-700/30'
+  const baseImage = createBaseImage(isHeader)
+  let imageElement
 
-  // Create the image element with or without motion
-  const createImageElement = () => {
-    const imageComponent = (
-      <Image
-        className={imageStyles}
-        src="/images/profile-photo.jpg"
-        width={isHeader ? 80 : 160}
-        height={isHeader ? 80 : 160}
-        alt="Image of Joel O'Connor"
-        priority
-        sizes={isHeader ? '80px' : '(max-width: 768px) 128px, 160px'}
-      />
-    )
-
-    // Return a standard div if animation is disabled
-    if (shouldDisableAnimation) {
-      return <div className="overflow-hidden rounded-xl">{imageComponent}</div>
-    }
-
-    // Return animated version if animation is enabled
-    return (
-      <motion.div
-        layoutId="profile-image"
-        className="overflow-hidden rounded-xl"
-        transition={{
-          type: 'spring',
-          stiffness: 180,
-          damping: 15,
-          mass: 0.5,
-          duration: 0.2,
-        }}
-      >
-        {imageComponent}
-      </motion.div>
-    )
+  if (shouldDisableAnimation) {
+    imageElement = <StaticImageWrapper>{baseImage}</StaticImageWrapper>
+  } else {
+    imageElement = <AnimatedImageWrapper>{baseImage}</AnimatedImageWrapper>
   }
-
-  // Create the image element
-  const imageElement = createImageElement()
 
   if (isHeader) {
     return (
