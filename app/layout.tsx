@@ -32,12 +32,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className="bg-stone-50 transition-colors duration-200 dark:bg-stone-950">
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <div className="mx-auto flex min-h-[100dvh] max-w-(--breakpoint-xl) flex-col rounded-lg">
             <Header />
             <main className="flex grow flex-col">{children}</main>
