@@ -45,13 +45,27 @@ const MOTION_CONFIG = {
   transition: { type: 'spring', duration: 0.7, bounce: 0.5 },
 } as const
 
+const emojiMotionConfig = {
+  initial: { opacity: 0, scale: 0.5, rotate: -10 },
+  animate: { opacity: 1, scale: 1, rotate: 0 },
+  transition: { type: 'spring', duration: 0.5, bounce: 0.7 },
+} as const
+
 const baseHeadingClasses = {
-  layout: 'flex h-full w-full justify-center gap-0',
+  layout: 'flex h-full w-full items-center justify-center gap-3',
   typography: 'font-sans text-5xl font-semibold',
 }
 
 const firstTextClasses = {
   color: 'text-purple-500 dark:text-purple-600',
+}
+
+const secondTextClasses = {
+  base: 'whitespace-pre',
+}
+
+const emojiClasses = {
+  base: 'inline-block',
 }
 
 /**
@@ -83,8 +97,15 @@ export const AnimatedHeading: React.FC<AnimatedHeadingProps> = ({
       </motion.span>
       {isTyping && (
         <>
-          <span className="whitespace-pre">{typedText}</span>
-          {isTypingComplete && <span className="ml-3">{thirdText}</span>}
+          <span className={clsx(secondTextClasses.base)}>{typedText}</span>
+          {isTypingComplete && (
+            <motion.span
+              className={clsx(emojiClasses.base)}
+              {...emojiMotionConfig}
+            >
+              {thirdText}
+            </motion.span>
+          )}
         </>
       )}
     </h1>
