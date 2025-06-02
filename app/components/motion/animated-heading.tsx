@@ -9,18 +9,23 @@ import { motion } from 'motion/react'
  * @param text - The text to be typed
  * @param speed - The typing speed in milliseconds
  */
-const useTypingAnimation = (text: string, speed = 50) => {
+function useTypingAnimation(text: string, speed = 50) {
   const [isTyping, setIsTyping] = useState(false)
   const [typedText, setTypedText] = useState('')
 
-  useEffect(() => {
-    if (isTyping && typedText.length < text.length) {
-      const timeout = setTimeout(() => {
-        setTypedText(text.slice(0, typedText.length + 1))
-      }, speed)
-      return () => clearTimeout(timeout)
-    }
-  }, [isTyping, typedText, text, speed])
+  useEffect(
+    function () {
+      if (isTyping && typedText.length < text.length) {
+        const timeout = setTimeout(function () {
+          setTypedText(text.slice(0, typedText.length + 1))
+        }, speed)
+        return function () {
+          clearTimeout(timeout)
+        }
+      }
+    },
+    [isTyping, typedText, text, speed],
+  )
 
   return { isTyping, setIsTyping, typedText }
 }
@@ -71,14 +76,18 @@ const emojiClasses = {
 /**
  * An animated heading component that displays text with a typing animation effect
  */
-export const AnimatedHeading: React.FC<AnimatedHeadingProps> = ({
+export function AnimatedHeading({
   firstText = 'Hey!',
   secondText = "I'm Joel",
   thirdText = '👋',
   className,
-}) => {
+}: AnimatedHeadingProps) {
   const { isTyping, setIsTyping, typedText } = useTypingAnimation(secondText)
   const isTypingComplete = typedText.length === secondText.length
+
+  function handleAnimationComplete() {
+    setIsTyping(true)
+  }
 
   return (
     <h1
@@ -91,7 +100,7 @@ export const AnimatedHeading: React.FC<AnimatedHeadingProps> = ({
       <motion.span
         className={clsx(firstTextClasses.color)}
         {...MOTION_CONFIG}
-        onAnimationComplete={() => setIsTyping(true)}
+        onAnimationComplete={handleAnimationComplete}
       >
         {firstText}
       </motion.span>

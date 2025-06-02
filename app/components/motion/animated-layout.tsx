@@ -26,6 +26,14 @@ const FADE_VARIANTS = {
   visible: { opacity: 1 }, // Final state: fully visible
 } as const
 
+/**
+ * CSS classes used by the component
+ */
+const LAYOUT_CLASSES = {
+  base: 'flex w-full flex-col',
+  home: 'grow justify-center',
+} as const
+
 interface AnimatedLayoutProps {
   children: ReactNode
 }
@@ -41,32 +49,29 @@ interface AnimatedLayoutProps {
  * @returns {JSX.Element} A motion.div wrapper with fade animation
  */
 export function AnimatedLayout({ children }: AnimatedLayoutProps) {
-  // Get current path to determine if we're on the home page
   const pathname = usePathname()
   const isHome = pathname === '/'
 
-  // Base classes applied to all instances of the component
-  const baseClasses = 'flex w-full flex-col'
-  // Additional classes only applied on the home page
-  const homeClasses = 'grow justify-center'
+  function getAnimationTransition() {
+    return {
+      delay: isHome
+        ? ANIMATION_CONFIG.DELAY.HOME
+        : ANIMATION_CONFIG.DELAY.OTHER,
+      duration: ANIMATION_CONFIG.DURATION,
+    }
+  }
+
+  function getClassName() {
+    return twMerge(LAYOUT_CLASSES.base, isHome && LAYOUT_CLASSES.home)
+  }
 
   return (
     <motion.div
-      // Start with hidden state (opacity: 0)
       initial="hidden"
-      // Animate to visible state (opacity: 1)
       animate="visible"
-      // Use the predefined fade variants
       variants={FADE_VARIANTS}
-      // Configure animation timing based on current page
-      transition={{
-        delay: isHome
-          ? ANIMATION_CONFIG.DELAY.HOME
-          : ANIMATION_CONFIG.DELAY.OTHER,
-        duration: ANIMATION_CONFIG.DURATION,
-      }}
-      // Merge base classes with conditional home page classes
-      className={twMerge(baseClasses, isHome && homeClasses)}
+      transition={getAnimationTransition()}
+      className={getClassName()}
     >
       {children}
     </motion.div>

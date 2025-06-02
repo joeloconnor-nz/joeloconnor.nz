@@ -38,26 +38,31 @@ const IMAGE_DIMENSIONS = {
 } as const
 
 /**
+ * CSS classes for different image states
+ */
+const IMAGE_CLASSES = {
+  header:
+    'size-12 rounded-xl shadow-sm shadow-stone-900/60 transition-shadow duration-200 hover:shadow-sm sm:size-20 dark:shadow-stone-700/30',
+  default:
+    'size-32 rounded-xl shadow-2xl shadow-stone-900/60 sm:size-40 dark:shadow-stone-700/30',
+  wrapper: 'overflow-hidden rounded-xl',
+  link: 'transition-transform hover:scale-105',
+} as const
+
+/**
  * Returns the appropriate image styles based on whether the image is in the header
  */
 function getImageStyles(isHeader: boolean): string {
-  if (isHeader) {
-    return 'size-12 rounded-xl shadow-sm shadow-stone-900/60 transition-shadow duration-200 hover:shadow-sm sm:size-20 dark:shadow-stone-700/30'
-  } else {
-    return 'size-32 rounded-xl shadow-2xl shadow-stone-900/60 sm:size-40 dark:shadow-stone-700/30'
-  }
+  return isHeader ? IMAGE_CLASSES.header : IMAGE_CLASSES.default
 }
 
 /**
  * Creates the base Image component with common props
  */
 function createBaseImage(isHeader: boolean) {
-  let dimensions
-  if (isHeader) {
-    dimensions = IMAGE_DIMENSIONS.header
-  } else {
-    dimensions = IMAGE_DIMENSIONS.default
-  }
+  const dimensions = isHeader
+    ? IMAGE_DIMENSIONS.header
+    : IMAGE_DIMENSIONS.default
 
   return (
     <Image
@@ -79,7 +84,7 @@ function AnimatedImageWrapper({ children }: { children: React.ReactNode }) {
   return (
     <motion.div
       layoutId="profile-image"
-      className="overflow-hidden rounded-xl"
+      className={IMAGE_CLASSES.wrapper}
       transition={ANIMATION_CONFIG}
     >
       {children}
@@ -91,7 +96,7 @@ function AnimatedImageWrapper({ children }: { children: React.ReactNode }) {
  * Wraps the image in a standard div when animations are disabled
  */
 function StaticImageWrapper({ children }: { children: React.ReactNode }) {
-  return <div className="overflow-hidden rounded-xl">{children}</div>
+  return <div className={IMAGE_CLASSES.wrapper}>{children}</div>
 }
 
 /**
@@ -111,17 +116,15 @@ export function ProfileImage({
   if (isHeader && isHome) return null
 
   const baseImage = createBaseImage(isHeader)
-  let imageElement
-
-  if (shouldDisableAnimation) {
-    imageElement = <StaticImageWrapper>{baseImage}</StaticImageWrapper>
-  } else {
-    imageElement = <AnimatedImageWrapper>{baseImage}</AnimatedImageWrapper>
-  }
+  const imageElement = shouldDisableAnimation ? (
+    <StaticImageWrapper>{baseImage}</StaticImageWrapper>
+  ) : (
+    <AnimatedImageWrapper>{baseImage}</AnimatedImageWrapper>
+  )
 
   if (isHeader) {
     return (
-      <Link href="/" className="transition-transform hover:scale-105">
+      <Link href="/" className={IMAGE_CLASSES.link}>
         {imageElement}
       </Link>
     )
