@@ -143,7 +143,6 @@ export function ContactForm() {
                   options={{
                     theme: theme === 'dark' ? 'dark' : 'light',
                     refreshExpired: 'auto',
-                    size: 'invisible',
                   }}
                 />
               </FormControl>
