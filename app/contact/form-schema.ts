@@ -15,7 +15,7 @@ export const formSchema = z.object({
       message: 'Your message cannot be longer than 1000 characters',
     }),
   captchaToken: z.string({
-    message: 'Please complete the captcha verification',
+    message: 'Captcha verification failed. Please try again.',
   }),
 })
 
