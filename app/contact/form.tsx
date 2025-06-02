@@ -1,11 +1,11 @@
 'use client'
 
 import { zodResolver } from '@hookform/resolvers/zod'
+import { Turnstile } from '@marsidev/react-turnstile'
 import { LoaderCircleIcon } from 'lucide-react'
 import { useTheme } from 'next-themes'
 import { useRouter } from 'next/navigation'
 import { useForm } from 'react-hook-form'
-import Turnstile from 'react-turnstile'
 import { twMerge } from 'tailwind-merge'
 
 import {
@@ -138,10 +138,13 @@ export function ContactForm() {
               <FormControl>
                 <Turnstile
                   className="mt-2 h-[65px] w-[300px]"
-                  sitekey={turnstileSiteKey}
-                  onVerify={(token) => field.onChange(token)}
-                  refreshExpired="auto"
-                  theme={theme === 'dark' ? 'dark' : 'light'}
+                  siteKey={turnstileSiteKey}
+                  onSuccess={(token: string) => field.onChange(token)}
+                  options={{
+                    theme: theme === 'dark' ? 'dark' : 'light',
+                    refreshExpired: 'auto',
+                    size: 'invisible',
+                  }}
                 />
               </FormControl>
               <FormMessage />
