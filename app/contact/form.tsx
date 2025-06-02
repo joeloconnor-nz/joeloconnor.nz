@@ -6,6 +6,7 @@ import { LoaderCircleIcon } from 'lucide-react'
 import { useTheme } from 'next-themes'
 import { useRouter } from 'next/navigation'
 import { useForm } from 'react-hook-form'
+import { twMerge } from 'tailwind-merge'
 
 import {
   Form,
@@ -53,7 +54,7 @@ export function ContactForm() {
   return (
     <Form {...form}>
       <form
-        className="flex flex-col gap-6"
+        className="flex flex-col gap-3 pb-8 sm:gap-6"
         onSubmit={form.handleSubmit(onSubmit)}
       >
         <FormField
@@ -86,7 +87,6 @@ export function ContactForm() {
                   {...field}
                   type="email"
                   autoComplete="email"
-                  placeholder="email@example.com"
                   disabled={isLoading}
                 />
               </FormControl>
@@ -102,8 +102,17 @@ export function ContactForm() {
             <FormItem>
               <div className="flex items-center justify-between">
                 <FormLabel>Message</FormLabel>
-                <FormDescription className="text-right">
-                  {field.value.length} / 2000
+                <FormDescription
+                  className={twMerge(
+                    'text-right',
+                    field.value.length > 0 &&
+                      field.value.length < 10 &&
+                      'text-red-500',
+                    field.value.length > 900 && 'text-orange-500',
+                    field.value.length > 950 && 'text-red-500',
+                  )}
+                >
+                  {field.value.length} / 1000
                 </FormDescription>
               </div>
 
@@ -128,13 +137,12 @@ export function ContactForm() {
             <FormItem>
               <FormControl>
                 <Turnstile
-                  className="h-[65px] w-[300px]"
+                  className="mt-2 h-[65px] w-[300px]"
                   siteKey={turnstileSiteKey}
                   onSuccess={(token: string) => field.onChange(token)}
                   options={{
                     theme: theme === 'dark' ? 'dark' : 'light',
                     refreshExpired: 'auto',
-                    size: 'invisible',
                   }}
                 />
               </FormControl>
@@ -143,7 +151,11 @@ export function ContactForm() {
           )}
         />
 
-        <Button className="w-full" type="submit" disabled={isLoading}>
+        <Button
+          className="mt-4 w-full transition-transform hover:scale-101"
+          type="submit"
+          disabled={isLoading}
+        >
           {isLoading ? (
             <>
               <LoaderCircleIcon className="mr-2 size-4 animate-spin" />
